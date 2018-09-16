@@ -2,11 +2,12 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <GL/glew.h>
 
 class Shader {
 public:
-	Shader();
+	Shader(std::string path);
 	void Bind();
 	virtual ~Shader();
 private:
