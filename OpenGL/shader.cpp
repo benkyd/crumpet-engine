@@ -69,6 +69,12 @@ void Shader::Bind() {
 	glUseProgram(m_program);
 }
 
+std::string Shader::LoadFile(std::string path) {
+
+
+	std::cout << "Successfully loaded " + path << std::endl;
+}
+
 Shader::~Shader() {
 	for (unsigned int i = 0; i < NUM_SHADERS; i++) {
 		glDetachShader(m_program, m_shaders[i]);
