@@ -1,4 +1,4 @@
-#include "mesh.h"
+#include "headers/mesh.h"
 
 Mesh::Mesh(GLfloat *vertices, unsigned int numVerticies) {
 	m_drawCount = numVerticies;

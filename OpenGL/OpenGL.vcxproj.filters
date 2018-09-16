@@ -12,13 +12,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="display.h">
+    <ClInclude Include="headers/display.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="mesh.h">
+    <ClInclude Include="headers/mesh.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="shader.h">
+    <ClInclude Include="headers/shader.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

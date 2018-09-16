@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 #include <iostream>
 
-#include "display.h"
+#include "headers/display.h"
 
 Display::Display(int width, int height, const std::string& title) {
 	SDL_Init(SDL_INIT_VIDEO);

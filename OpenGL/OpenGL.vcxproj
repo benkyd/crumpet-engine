@@ -126,9 +126,9 @@
     <ClCompile Include="shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="display.h" />
-    <ClInclude Include="mesh.h" />
-    <ClInclude Include="shader.h" />
+    <ClInclude Include="headers/display.h" />
+    <ClInclude Include="headers/mesh.h" />
+    <ClInclude Include="headers/shader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

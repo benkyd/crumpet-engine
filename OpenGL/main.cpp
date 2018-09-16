@@ -1,9 +1,9 @@
 #include <iostream>
 #include <GL/glew.h>
 
-#include "display.h"
-#include "mesh.h"
-#include "shader.h"
+#include "headers/display.h"
+#include "headers/mesh.h"
+#include "headers/shader.h"
 
 #undef main
 
