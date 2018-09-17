@@ -1,13 +1,11 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
-#include <glm/glm.hpp>
 #include <GL/glew.h>
 
 class Mesh {
 public:
-	Mesh(GLfloat *vertices, unsigned int *indices, unsigned int numVerticies);
+	Mesh(GLfloat *vertices, unsigned int numVerticies);
 	void Draw();
 	virtual ~Mesh();
 private:

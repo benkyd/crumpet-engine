@@ -1,20 +1,12 @@
-<<<<<<< HEAD
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include "texture.h"
-=======
-#include "texture.h"
-#include "stb_image.h"
->>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f
 #include <cassert>
 #include <iostream>
 
 Texture::Texture(std::string fileName) {
-<<<<<<< HEAD
 	stbi_set_flip_vertically_on_load(true);
 
-=======
->>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f
 	int width, height, numComponents;
 	unsigned char* imageData = stbi_load(fileName.c_str(), &width, &height, &numComponents, 4);
 
