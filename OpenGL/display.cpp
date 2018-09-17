@@ -6,6 +6,7 @@
 Display::Display(int width, int height, const std::string& title) {
 	SDL_Init(SDL_INIT_VIDEO);
 
+	SDL_GL_SetSwapInterval(0);
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
@@ -21,20 +22,15 @@ Display::Display(int width, int height, const std::string& title) {
 		std::cerr << "GLEW Failed to initialize" << std::endl;
 	}
 
+	SDL_WarpMouseInWindow(m_window, width / 2, height / 2);
+	SDL_SetRelativeMouseMode(SDL_TRUE);
+
 	m_isClosed = false;
 	std::cout << "Display initialized and gl context successfuly created" << std::endl;
 }
 
 void Display::Update() {
 	SDL_GL_SwapWindow(m_window);
-
-	SDL_Event e;
-
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) {
-			m_isClosed = true;
-		}
-	}
 }
 
 bool Display::isClosed() {
@@ -45,4 +41,5 @@ Display::~Display() {
 	SDL_GL_DeleteContext(m_glContext);
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
+	m_isClosed = true;
 }

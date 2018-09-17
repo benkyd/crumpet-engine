@@ -42,37 +42,55 @@ int main(int argc, char** argv) {
 	ShaderMode mode = ShaderMode::SHADER_COLOUR;
 
 	Mesh mesh(vertices, indices, sizeof(vertices) / sizeof(vertices[0]));
-	Texture chanceCube("C:/Users/Ben/Desktop/crumpet-engine/resources/textures/chance-cube.jpg");
 
-	Shader shader("C:/Users/Ben/Desktop/crumpet-engine/resources/shaders/simple2d");
+	// std::string resourceFolder = "C:/Users/Ben/Desktop/crumpet-engine/"; // Laptop
+	std::string resourceFolder = "E:/Games/Practicing/OpenGL/"; // PC
 
+	
+	Shader texShader(resourceFolder + "resources/shaders/tex");
+	Shader colourShader(resourceFolder + "resources/shaders/col");
+	Shader gradientShader(resourceFolder + "resources/shaders/gradient");
+	Shader texGradientShader(resourceFolder + "resources/shaders/texGrad");
+	
+	Texture chanceCube(resourceFolder + "resources/textures/chance-cube.jpg");
 
-	unsigned int ticks = SDL_GetTicks();
-	unsigned int frames = 0;
+	SDL_Event event;
 	while(!display.isClosed()) {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		switch(mode) {
 		case ShaderMode::SHADER_TEXURE:
+			chanceCube.Bind(0);
+			texShader.Bind();
 			break;
 		case ShaderMode::SHADER_COLOUR:
+			colourShader.Bind();
 			break;
 		case ShaderMode::SHADER_GRADIENT:
+			gradientShader.Bind();
 			break;
 		case ShaderMode::SHADER_TEXGRADIENT:
-			break;
-		default:
+			chanceCube.Bind(0);
+			texGradientShader.Bind();
 			break;
 		}
 
-		shader.Bind();
-		
-		chanceCube.Bind(0);
 		mesh.Draw();
+
+		while (SDL_PollEvent(&event) != 0) {
+			if (event.type == SDL_KEYDOWN) {
+				if (mode == ShaderMode::SHADER_TEXURE) mode = ShaderMode::SHADER_COLOUR;
+				else if (mode == ShaderMode::SHADER_COLOUR) mode = ShaderMode::SHADER_GRADIENT;
+				else if (mode == ShaderMode::SHADER_GRADIENT) mode = ShaderMode::SHADER_TEXGRADIENT;
+				else if (mode == ShaderMode::SHADER_TEXGRADIENT) mode = ShaderMode::SHADER_TEXURE;
+				if (event.key.keysym.sym == SDLK_ESCAPE) {
+					display.~Display();
+				}
+			}
+		}
 
 
 		display.Update();
-		frames++;
 	}
 
 	display.~Display();
