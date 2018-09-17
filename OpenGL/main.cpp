@@ -9,6 +9,7 @@
 #undef main
 
 int main(int argc, char** argv) {
+<<<<<<< HEAD
 	Display display(600, 600, "Crumpet Engine");
 	glClearColor(0.1f, 0.45f, 0.9f, 1.0f);
 
@@ -25,6 +26,17 @@ int main(int argc, char** argv) {
 		// 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
 		//-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
 		// 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top 
+=======
+	Display display(800, 800, "Crumpet Engine");
+	glClearColor(0.1f, 0.45f, 0.9f, 1.0f);
+
+	GLfloat vertices[] = {
+		// positions          // colors           // texture coords
+		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+		-0.5f,-0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+		-0.5f, 0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+>>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f
 	};
 
 	unsigned int indices[] = {
@@ -32,6 +44,7 @@ int main(int argc, char** argv) {
 		1, 2, 3  // second triangle
 	};
 
+<<<<<<< HEAD
 	enum class ShaderMode {
 		SHADER_TEXURE,
 		SHADER_COLOUR,
@@ -43,6 +56,11 @@ int main(int argc, char** argv) {
 
 	Mesh mesh(vertices, indices, sizeof(vertices) / sizeof(vertices[0]));
 	Texture chanceCube("C:/Users/Ben/Desktop/crumpet-engine/resources/textures/chance-cube.jpg");
+=======
+	Mesh mesh(vertices, indices, sizeof(vertices) / sizeof(vertices[0]));
+	Shader shader("E:/Games/Practicing/OpenGL/resources/shaders/simple2d");
+	Texture chanceCube("E:/Games/Practicing/OpenGL/resources/textures/chance-cube.jpg");
+>>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f
 
 	Shader shader("C:/Users/Ben/Desktop/crumpet-engine/resources/shaders/simple2d");
 
@@ -66,7 +84,10 @@ int main(int argc, char** argv) {
 		}
 
 		shader.Bind();
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f
 		chanceCube.Bind(0);
 		mesh.Draw();
 

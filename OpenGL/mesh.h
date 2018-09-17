@@ -13,11 +13,13 @@ public:
 private:
 	enum {
 		POSITION_VB,
-		NUM_BUFFERS
+		NUM_BUFFERS,
+		TEXCOORD_VB
 	};
 
 	unsigned int m_VAO;
-	unsigned int m_VBO[NUM_BUFFERS];
+	unsigned int m_VBO;
+	unsigned int m_EBO;
 
 	unsigned int m_drawCount;
 };

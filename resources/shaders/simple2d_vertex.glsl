@@ -10,4 +10,8 @@ void main() {
     gl_Position = vec4(aPos, 1.0);
     ourColor = aColor;
     TexCoord = aTexCoord;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f

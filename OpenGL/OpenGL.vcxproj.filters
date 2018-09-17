@@ -5,6 +5,12 @@
     <ClCompile Include="display.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="shader.cpp" />
+<<<<<<< HEAD
+=======
+    <ClCompile Include="stb_image.c">
+      <Filter>helpers</Filter>
+    </ClCompile>
+>>>>>>> 11f63887e9573415f2ed2fed84986ab4c4bd0b4f
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
