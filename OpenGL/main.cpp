@@ -32,9 +32,19 @@ int main(int argc, char** argv) {
 		1, 2, 3  // second triangle
 	};
 
+	enum class ShaderMode {
+		SHADER_TEXURE,
+		SHADER_COLOUR,
+		SHADER_GRADIENT,
+		SHADER_TEXGRADIENT
+	};
+
+	ShaderMode Mode;
+
 	Mesh mesh(vertices, indices, sizeof(vertices) / sizeof(vertices[0]));
-	Shader shader("C:/Users/Ben/Desktop/crumpet-engine/resources/shaders/simple2d");
 	Texture chanceCube("C:/Users/Ben/Desktop/crumpet-engine/resources/textures/chance-cube.jpg");
+
+	Shader shader("C:/Users/Ben/Desktop/crumpet-engine/resources/shaders/simple2d");
 
 	while(!display.isClosed()) {
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -46,5 +56,6 @@ int main(int argc, char** argv) {
 		display.Update();
 	}
 
+	display.~Display();
 	return 0;
 }
