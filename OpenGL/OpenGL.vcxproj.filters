@@ -5,9 +5,6 @@
     <ClCompile Include="display.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="shader.cpp" />
-    <ClCompile Include="stb_image.c">
-      <Filter>helpers</Filter>
-    </ClCompile>
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
