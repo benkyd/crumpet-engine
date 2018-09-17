@@ -13,6 +13,9 @@ Shader::Shader(std::string path) {
 		std::cout << "Shader successfully attatched" << std::endl;
 	}
 
+	glBindAttribLocation(m_program, 0, "aPos");
+	glBindAttribLocation(m_program, 1, "aColor");
+
 	glLinkProgram(m_program);
 
 	int success;
