@@ -1,22 +1,12 @@
-#include "headers/shader.h"
+#include "shader.h"
 
-const char *vertexShaderSource = "#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"void main()\n"
-"{\n"
-"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-"}\0";
-const char *fragmentShaderSource = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"void main()\n"
-"{\n"
-"   FragColor = vec4(0.25f, 1.0f, 0.49f, 1.0f);\n"
-"}\n\0";
+Shader::Shader(std::string path) {
+	std::string vertexPath = path + "_vertex.glsl";
+	std::string fragmentPath = path + "_fragment.glsl";
 
-Shader::Shader() {
 	m_program = glCreateProgram();
-	m_shaders[0] = CreateShader(vertexShaderSource, GL_VERTEX_SHADER);
-	m_shaders[1] = CreateShader(fragmentShaderSource, GL_FRAGMENT_SHADER);
+	m_shaders[0] = CreateShader(LoadFile(vertexPath), GL_VERTEX_SHADER);
+	m_shaders[1] = CreateShader(LoadFile(fragmentPath), GL_FRAGMENT_SHADER);
 
 	for (unsigned int i = 0; i < NUM_SHADERS; i++) {
 		glAttachShader(m_program, m_shaders[i]);
@@ -67,6 +57,27 @@ GLuint Shader::CreateShader(const std::string& text, GLenum shaderType) {
 
 void Shader::Bind() {
 	glUseProgram(m_program);
+}
+
+std::string Shader::LoadFile(std::string path) {
+	std::ifstream file;
+	file.open((path).c_str());
+
+	std::string output;
+	std::string line;
+
+	if (file.is_open()) {
+		while (file.good()) {
+			getline(file, line);
+			output.append(line + "\n");
+		}
+	}
+	else {
+		std::cout << "Unable to load shader: " << path << std::endl;
+	}
+
+	std::cout << "Successfully loaded " + path << std::endl;
+	return output;
 }
 
 Shader::~Shader() {
