@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
 	glClearColor(0.1f, 0.45f, 0.9f, 1.0f);
 
 	GLfloat vertices[] = {
-		// positions          // colors           // texture coords
+		// positions         // colors          // texture coords
 		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,  1.0f, 1.0f,   // top right
 		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,  1.0f, 0.0f,   // bottom right
 		-0.5f,-0.5f, 0.0f,   0.0f, 0.0f, 1.0f,  0.0f, 0.0f,   // bottom left
@@ -39,21 +39,40 @@ int main(int argc, char** argv) {
 		SHADER_TEXGRADIENT
 	};
 
-	ShaderMode Mode;
+	ShaderMode mode = ShaderMode::SHADER_COLOUR;
 
 	Mesh mesh(vertices, indices, sizeof(vertices) / sizeof(vertices[0]));
 	Texture chanceCube("C:/Users/Ben/Desktop/crumpet-engine/resources/textures/chance-cube.jpg");
 
 	Shader shader("C:/Users/Ben/Desktop/crumpet-engine/resources/shaders/simple2d");
 
+
+	unsigned int ticks = SDL_GetTicks();
+	unsigned int frames = 0;
 	while(!display.isClosed()) {
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		switch(mode) {
+		case ShaderMode::SHADER_TEXURE:
+			break;
+		case ShaderMode::SHADER_COLOUR:
+			break;
+		case ShaderMode::SHADER_GRADIENT:
+			break;
+		case ShaderMode::SHADER_TEXGRADIENT:
+			break;
+		default:
+			break;
+		}
+
 		shader.Bind();
+		
 		chanceCube.Bind(0);
 		mesh.Draw();
 
+
 		display.Update();
+		frames++;
 	}
 
 	display.~Display();
