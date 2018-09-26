@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-#include <SDL.h>
-
 #include "game.h"
 
 #undef main
@@ -14,7 +10,8 @@ int main(int argc, char **argv) {
 	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	while (!game.IsDisplayClosed()) {
-	
+		SDL_Event *e;
+		while (&e) {}
 	}
 
 	return 0;
