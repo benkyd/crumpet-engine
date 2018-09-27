@@ -6,6 +6,8 @@ Display::Display(std::string title, int width, int height) {
 	}
 
 	m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+	m_screenSurface = SDL_GetWindowSurface(m_window);
+
 	isClosed = false;
 }
 

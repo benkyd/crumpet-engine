@@ -11,6 +11,8 @@ public:
 	virtual ~Display();
 private:
 	SDL_Window *m_window;
+	SDL_Surface *m_screenSurface;
+	SDL_Surface *m_texture;
 	bool isClosed;
 };
 
