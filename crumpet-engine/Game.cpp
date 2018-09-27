@@ -1,9 +1,9 @@
 #include "game.h"
 
-Game::Game(std::string title, int width, int height) 
-	:m_display(title, width, height) {
+Game::Game(std::string title, int width, int height)
+	: m_display(title, width, height) {
 
-	std::cout << "Game engine initialized" << std::endl;
+	std::cout << "Engine initialized" << std::endl;
 }
 
 bool Game::IsDisplayClosed() {
