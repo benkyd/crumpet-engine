@@ -4,6 +4,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -15,6 +16,9 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

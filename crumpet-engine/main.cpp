@@ -8,9 +8,14 @@
 int main(int argc, char** argv) {
 	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT);
 
+	SDL_Event e;
 	while (!game.IsDisplayClosed()) {
-		SDL_Event *e;
-		while (&e) {}
+
+		while (SDL_PollEvent(&e) != 0)
+			if (e.type == SDL_QUIT)
+				game.CloseDisplay();
+
+		game.UpdateDisplay();
 	}
 
 	return 0;

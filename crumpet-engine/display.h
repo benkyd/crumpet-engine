@@ -7,12 +7,16 @@
 class Display {
 public:
 	Display(std::string title, int width, int height);
+
+	void Update();
+
 	bool IsClosed();
+	void Close();
 	virtual ~Display();
 private:
 	SDL_Window *m_window;
-	SDL_Surface *m_screenSurface;
-	SDL_Surface *m_texture;
+	SDL_Renderer *m_renderer;
+
 	bool isClosed;
 };
 
