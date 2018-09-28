@@ -1,18 +1,13 @@
 #pragma once
 
 #include <string>
+#include <SDL.h>
 #include "renderer.h"
 #include "entity.h"
 
-class Game {
+class Game : public Renderer {
 public:
 	Game(std::string title, int width, int height, int targetFramerate, int targetUpdaterate);
-
-	void UpdateDisplay();
-	void CloseDisplay();
-	bool IsDisplayClosed();
-
-	Renderer GetDisplay();
 
 	void PollEvents();
 
@@ -24,6 +19,5 @@ private:
 	int framerate;  // Current framerate
 	int updaterate; // Current updaterate
 
-	Renderer m_display;
 	SDL_Event m_event;
 };

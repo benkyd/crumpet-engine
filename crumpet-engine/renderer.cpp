@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "entity.h"
 
 Renderer::Renderer(std::string title, int width, int height) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -7,21 +8,28 @@ Renderer::Renderer(std::string title, int width, int height) {
 
 	m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	SDLRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
-	SDL_SetRenderDrawColor(SDLRenderer, 66, 134, 244, 255);
 
 	isClosed = false;
 }
 
-void Renderer::Update() {
-	SDL_RenderClear(SDLRenderer);
+void Renderer::RenderEntity(Entity* entity) {
+	entity->Render();
+}
+
+void Renderer::RenderUpdate() {
+	SDL_SetRenderDrawColor(SDLRenderer, 66, 134, 244, 255);
 	SDL_RenderPresent(SDLRenderer);
 }
 
-bool Renderer::IsClosed() {
+void Renderer::RenderClear() {
+	SDL_RenderClear(SDLRenderer);
+}
+
+bool Renderer::IsDisplayClosed() {
 	return isClosed;
 }
 
-void Renderer::Close() {
+void Renderer::CloseDisplay() {
 	isClosed = true;
 }
 

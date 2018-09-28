@@ -80,7 +80,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>./lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,14 +126,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="entity.cpp" />
-    <ClCompile Include="renderer.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h" />
-    <ClInclude Include="renderer.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
