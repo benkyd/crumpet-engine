@@ -2,18 +2,17 @@
 
 #undef main
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 
 int main(int argc, char** argv) {
-	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT);
+	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 0, 60);
 
-	SDL_Event e;
+	
+
 	while (!game.IsDisplayClosed()) {
-
-		while (SDL_PollEvent(&e) != 0)
-			if (e.type == SDL_QUIT)
-				game.CloseDisplay();
+		game.PollEvents();
+		
 
 		game.UpdateDisplay();
 	}
