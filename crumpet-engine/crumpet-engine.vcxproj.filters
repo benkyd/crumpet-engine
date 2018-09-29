@@ -6,6 +6,7 @@
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="mathHelper.cpp" />
+    <ClCompile Include="sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -23,6 +24,12 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="mathHelper.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,8 +3,8 @@
 Game::Game(std::string title, int width, int height, int targetFramerate, int targetUpdaterate)
 		: Renderer(title, width, height, targetFramerate) {
 
-	this->targetFramerate = targetFramerate;
-	this->targetUpdaterate = targetUpdaterate;
+	this->TargetMsPerFrame = targetFramerate;
+	this->TargetMsPerUpdate = targetUpdaterate;
 
 	std::cout << "Engine initialized" << std::endl;
 }

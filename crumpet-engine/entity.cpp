@@ -38,6 +38,17 @@ bool Entity::LoadTexture(std::string path) {
 	return true;
 }
 
+bool Entity::LoadTexture(SDL_Surface* image) {
+	m_texture = SDL_CreateTextureFromSurface(m_SDLRenderer, image);
+	if (m_texture == NULL) {
+		std::cout << "Unable to create texture SDL ERROR: " << SDL_GetError() << std::endl;
+		return false;
+	}
+
+	SDL_FreeSurface(image);
+	return true;
+}
+
 void Entity::SetDrawColour(Vec4 col) {
 	this->m_col = col;
 	// SDL_SetRenderDrawColor(m_SDLRenderer, col.x, col.y, col.z, col.w);

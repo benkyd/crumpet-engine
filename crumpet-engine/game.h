@@ -3,7 +3,9 @@
 #include <string>
 #include <SDL.h>
 #include "renderer.h"
+#include "timer.h"
 #include "entity.h"
+#include "sprite.h"
 
 class Game : public Renderer {
 public:
@@ -11,13 +13,12 @@ public:
 
 	void PollEvents();
 
+	int TargetMsPerFrame;  // If 0, the engine will try as many as possibe, if 1, it will use vsync
+	int TargetMsPerUpdate; // If 0, the engine will try as many as possible
+	int MsPerFrame;        // Current framerate
+	int MsPerUpdate;       // Current updaterate
+
 	virtual ~Game();
 private:
-	int targetFramerate;  // If 0, the engine will try as many as possibe, if 1, it will use vsync
-	int targetUpdaterate; // If 0, the engine will try as many as possible
-
-	int framerate;  // Current framerate
-	int updaterate; // Current updaterate
-
 	SDL_Event m_event;
 };

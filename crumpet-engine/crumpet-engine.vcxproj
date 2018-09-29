@@ -130,12 +130,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mathHelper.cpp" />
     <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="mathHelper.h" />
     <ClInclude Include="renderer.h" />
+    <ClInclude Include="sprite.h" />
+    <ClInclude Include="timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
