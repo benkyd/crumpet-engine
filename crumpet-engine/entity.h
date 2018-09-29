@@ -22,6 +22,7 @@ enum struct PolyDrawType {
 
 class Entity {
 public:
+	Entity();
 	Entity(std::string name, SDL_Renderer* SDLRenderer); // Texture overload
 	Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawType); // Polygon overload
 
