@@ -1,9 +1,9 @@
 #include "entity.h"
 
-Entity::Entity(std::string name, SDL_Renderer* SDLRenderer, EntityType mode) {
+Entity::Entity(std::string name, SDL_Renderer* SDLRenderer, RenderType mode) {
 	this->m_name = name;
 	this->m_SDLRenderer = SDLRenderer;
-	this->RenderType = mode;
+	this->Rendertype = mode;
 }
 
 bool Entity::LoadTexture(std::string path) {
@@ -18,12 +18,25 @@ bool Entity::LoadTexture(std::string path) {
 		std::cout << "Unable to create texture from:" << (PATH + path).c_str() << " SDL ERROR: " << SDL_GetError() << std::endl;
 		return false;
 	}
+
 	SDL_FreeSurface(loadedSurface);
 	return true;
 }
 
+void Entity::SetVecPoints(std::vector<Vec2> polyPoints) {
+	this->m_polyPoints = polyPoints;
+}
+
+void Entity::AddVecPoint(Vec2 point) {
+	this->m_polyPoints.push_back(point);
+}
+
+void Entity::SetPolyDrawType(PolyDrawType type) {
+	this->Drawtype = type;
+}
+
 void Entity::Render() {
-	if (RenderType == EntityType::MODE_TEXTURE)
+	if (Rendertype == RenderType::MODE_TEXTURE)
 		SDL_RenderCopy(m_SDLRenderer, m_texture, NULL, NULL);
 	// if (RenderType == EntityType::MODE_POLYGON)
 		

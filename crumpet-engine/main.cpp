@@ -8,10 +8,10 @@
 int main(int argc, char** argv) {
 	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 0, 60);
 
-	Entity mario("mario", game.SDLRenderer, EntityType::MODE_TEXTURE);
+	Entity mario("mario", game.SDLRenderer, RenderType::MODE_TEXTURE);
 	mario.LoadTexture("/resources/mario.png");
 
-	Entity box("box", game.SDLRenderer, EntityType::MODE_POLYGON);
+	Entity box("box", game.SDLRenderer, RenderType::MODE_POLYGON);
 
 
 	while (!game.IsDisplayClosed()) {
