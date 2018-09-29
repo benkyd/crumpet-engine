@@ -7,7 +7,7 @@
 
 class Renderer {
 public:
-	Renderer(std::string title, int width, int height);
+	Renderer(std::string title, int width, int height, int targetFramerate);
 
 	SDL_Renderer *SDLRenderer;
 	void RenderEntity(Entity* entity);

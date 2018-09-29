@@ -1,7 +1,7 @@
 #include "game.h"
 
 Game::Game(std::string title, int width, int height, int targetFramerate, int targetUpdaterate)
-		: Renderer(title, width, height) {
+		: Renderer(title, width, height, targetFramerate) {
 
 	this->targetFramerate = targetFramerate;
 	this->targetUpdaterate = targetUpdaterate;

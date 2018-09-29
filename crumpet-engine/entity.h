@@ -22,29 +22,38 @@ enum struct PolyDrawType {
 
 class Entity {
 public:
-	Entity(std::string name, SDL_Renderer* SDLRenderer, RenderType mode); // Texture overload
-	// Entity(); // Polygon overload
+	Entity(std::string name, SDL_Renderer* SDLRenderer); // Texture overload
+	Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawType); // Polygon overload
 
 	RenderType Rendertype = RenderType::MODE_DEFAULT;
 	PolyDrawType Drawtype = PolyDrawType::DRAW_DEFAULT;
 
 	bool LoadTexture(std::string path);
 
-	void SetVecPoints(std::vector<Vec2> polyPoints);
+	void SetDrawColour(Vec4 col);
+
+	void SetRect(Vec2 pos, Vec2 size);
+
+	void SetVecPoints(std::vector<Vec2> linePoints);
 	void AddVecPoint(Vec2 point);
-	void SetPolyDrawType(PolyDrawType type);
-	
+
 	void Render();
 
 	virtual ~Entity();
 private:
 	std::string m_name;
 
-	std::vector<Vec2> m_polyPoints;
+	Vec2 m_rectPos;
+	Vec2 m_rectSize;
+	SDL_Rect m_rect;
+
+	Vec4 m_col;
+
+	std::vector<Vec2> m_linePoints;
 	SDL_Texture* m_texture;
 
-	std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
-	// std::string PATH = "E:/Games/crumpet-engine";
+	// std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
+	std::string PATH = "E:/Games/crumpet-engine";
 
 	SDL_Renderer* m_SDLRenderer;
 };
