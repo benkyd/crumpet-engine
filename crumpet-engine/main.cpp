@@ -19,6 +19,10 @@ int main(int argc, char** argv) {
 	outlineBox.SetDrawColour(Vec4(0x00, 0xFF, 0x00, 0xFF));
 	outlineBox.SetRect(Vec2(SCREEN_WIDTH / 6, SCREEN_HEIGHT / 6), Vec2(SCREEN_WIDTH * 2 / 3, SCREEN_HEIGHT * 2 / 3));
 
+	Entity lineMesh("line mesh", game.SDLRenderer, PolyDrawType::DRAW_LINES);
+	lineMesh.SetDrawColour(Vec4(0x00, 0x00, 0xFF, 0xFF));
+	lineMesh.AddVecPoint(Vec4(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
+
 	while (!game.IsDisplayClosed()) {
 		game.PollEvents();
 		
@@ -28,6 +32,7 @@ int main(int argc, char** argv) {
 
 		game.RenderEntity(&box);
 		game.RenderEntity(&outlineBox);
+		game.RenderEntity(&lineMesh);
 
 		game.RenderUpdate();
 	}

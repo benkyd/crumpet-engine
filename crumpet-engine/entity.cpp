@@ -49,6 +49,14 @@ void Entity::SetRect(Vec2 pos, Vec2 size) {
 	m_rect = { pos.x, pos.y, size.x, size.y };
 }
 
+void Entity::SetVecPoints(std::vector<Vec4> points) {
+	this->m_linePoints = points;
+}
+
+void Entity::AddVecPoint(Vec4 point) {
+	this->m_linePoints.push_back(point);
+}
+
 void Entity::Render() {
 	if (Rendertype == RenderType::MODE_TEXTURE)
 		SDL_RenderCopy(m_SDLRenderer, m_texture, NULL, NULL);
@@ -58,6 +66,12 @@ void Entity::Render() {
 			SDL_RenderFillRect(m_SDLRenderer, &m_rect);
 		if (Drawtype == PolyDrawType::DRAW_OUTLINE_RECT)
 			SDL_RenderDrawRect(m_SDLRenderer, &m_rect);
+
+		if (Drawtype == PolyDrawType::DRAW_LINES) {
+			for (unsigned int i = 0; i < m_linePoints.size(); i++) {
+				SDL_RenderDrawLine(m_SDLRenderer, m_linePoints[i].x, m_linePoints[i].y, m_linePoints[i].z, m_linePoints[i].w);
+			}
+		}
 	}
 }
 

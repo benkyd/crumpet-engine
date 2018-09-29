@@ -34,8 +34,8 @@ public:
 
 	void SetRect(Vec2 pos, Vec2 size);
 
-	void SetVecPoints(std::vector<Vec2> linePoints);
-	void AddVecPoint(Vec2 point);
+	void SetVecPoints(std::vector<Vec4> points);
+	void AddVecPoint(Vec4 point);
 
 	void Render();
 
@@ -49,7 +49,7 @@ private:
 
 	Vec4 m_col;
 
-	std::vector<Vec2> m_linePoints;
+	std::vector<Vec4> m_linePoints;
 	SDL_Texture* m_texture;
 
 	// std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
