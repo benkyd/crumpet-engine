@@ -7,6 +7,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="mathHelper.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -32,5 +33,6 @@
     <ClInclude Include="timer.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="logger.h" />
   </ItemGroup>
 </Project>

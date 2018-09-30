@@ -2,12 +2,14 @@
 #include "entity.h"
 
 Renderer::Renderer(std::string title, int width, int height, int targetFramerate) {
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		std::cout << "SDL could not initialize, SDL ERROR: " << SDL_GetError() << std::endl;
 	}
+	std::cout << "SDL initialized" << std::endl;
 
 	m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
-	
+	std::cout << "SDL window created" << std::endl;
+
 	if (targetFramerate == 0)
 		SDLRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
 	if (targetFramerate == 1)
