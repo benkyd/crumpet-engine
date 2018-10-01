@@ -41,11 +41,12 @@ public:
 	void AnimateSprite(SpriteState state);
 	void Move();
 
+	Vec2 Pos;
 	void Render();
 
 	virtual ~Sprite();
 private:
-	std::map<SpriteState, std::vector<SDL_Rect*>> m_spriteMaps;
+	std::map <SpriteState, std::vector<SpriteClip>> m_spriteMaps;
 
 	SDL_Renderer* m_SDLRenderer;
 	SDL_Texture* m_spriteSheetTexture;
@@ -54,3 +55,11 @@ private:
 	int m_spriteSheetH;
 };
 
+struct SpriteClip {
+	int x, y;
+	SDL_Rect* clip;
+
+	SpriteClip(int x, int y, SDL_Rect* clip)
+		: x(x), y(y), clip(clip) {
+	}
+};

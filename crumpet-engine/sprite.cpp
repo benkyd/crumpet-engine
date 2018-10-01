@@ -1,7 +1,8 @@
 #include "sprite.h"
 
-Sprite::Sprite(std::string name, SDL_Renderer* SDLRenderer, SpriteType mode) 
-	: Entity(name, SDLRenderer) {
+Sprite::Sprite(std::string name, SDL_Renderer* SDLRenderer, SpriteType mode)
+	: Entity(name, SDLRenderer),
+	  Pos(0, 0) {
 
 	this->m_SDLRenderer = SDLRenderer;
 	this->Spritetype = mode;
@@ -22,7 +23,13 @@ bool Sprite::LoadSpriteTextures(std::string path) {
 }
 
 void Sprite::UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int seperation, int frames) {
-	m_spriteMaps[state];
+	for (auto i = 1; i <= frames; i++) {
+		m_spriteMaps[state].push_back(SpriteClip(startX, startY, &SDL_Rect()));
+	}
+}
+
+void Sprite::Render() {
+	
 }
 
 Sprite::~Sprite() {

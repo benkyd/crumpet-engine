@@ -16,5 +16,5 @@ void Game::PollEvents() {
 }
 
 Game::~Game() {
-
+	
 }
