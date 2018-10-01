@@ -5,7 +5,6 @@
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="game.cpp" />
-    <ClCompile Include="mathHelper.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="logger.cpp" />
   </ItemGroup>
@@ -33,6 +32,8 @@
     <ClInclude Include="timer.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="logger.h" />
+    <ClInclude Include="logger.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

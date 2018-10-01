@@ -3,7 +3,8 @@
 Entity::Entity(std::string name, SDL_Renderer* SDLRenderer) 
 	: m_rectPos(0, 0),
 	  m_rectSize(0, 0),
-	  m_col(0, 0, 0, 0) {
+	  m_col(0, 0, 0, 0),
+	  Pos(0, 0) {
 
 	this->m_name = name;
 	this->m_SDLRenderer = SDLRenderer;
@@ -12,8 +13,9 @@ Entity::Entity(std::string name, SDL_Renderer* SDLRenderer)
 
 Entity::Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawType)
 	: m_rectPos(0, 0),
-	m_rectSize(0, 0),
-	m_col(0, 0, 0, 0) {
+	  m_rectSize(0, 0),
+	  m_col(0, 0, 0, 0),
+	  Pos(0, 0) {
 
 	this->m_name = name;
 	this->m_SDLRenderer = SDLRenderer;
@@ -33,6 +35,9 @@ bool Entity::LoadTexture(std::string path) {
 		std::cout << "Unable to create texture from:" << (PATH + path).c_str() << " SDL ERROR: " << SDL_GetError() << std::endl;
 		return false;
 	}
+
+	this->m_textureW = loadedSurface->w;
+	this->m_textureH = loadedSurface->h;
 
 	SDL_FreeSurface(loadedSurface);
 	return true;
@@ -69,8 +74,12 @@ void Entity::AddVecPoint(Vec4 point) {
 }
 
 void Entity::Render() {
-	if (Rendertype == RenderType::MODE_TEXTURE)
-		SDL_RenderCopy(m_SDLRenderer, m_texture, NULL, NULL);
+	if (Rendertype == RenderType::MODE_TEXTURE) {
+		SDL_Rect renderQuad = { Pos.x, Pos.y, m_textureW, m_textureH };
+		SDL_RenderCopy(m_SDLRenderer, m_texture, NULL, &renderQuad);
+	}
+
+
 	if (Rendertype == RenderType::MODE_POLYGON) {
 		SDL_SetRenderDrawColor(m_SDLRenderer, m_col.x, m_col.y, m_col.z, m_col.w);
 		if (Drawtype == PolyDrawType::DRAW_FILLED_RECT)
@@ -87,5 +96,5 @@ void Entity::Render() {
 }
 
 Entity::~Entity() {
-
+	SDL_DestroyTexture(m_texture);
 }

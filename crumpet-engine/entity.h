@@ -40,6 +40,11 @@ public:
 
 	void Render();
 
+	Vec2 Pos;
+
+	std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
+	// std::string PATH = "E:/Games/crumpet-engine";
+	
 	virtual ~Entity();
 private:
 	std::string m_name;
@@ -52,9 +57,8 @@ private:
 
 	std::vector<Vec4> m_linePoints;
 	SDL_Texture* m_texture;
-
-	// std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
-	std::string PATH = "E:/Games/crumpet-engine";
+	int m_textureW;
+	int m_textureH;
 
 	SDL_Renderer* m_SDLRenderer;
 };
