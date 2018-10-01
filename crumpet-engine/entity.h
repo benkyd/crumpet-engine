@@ -42,10 +42,11 @@ public:
 
 	Vec2 Pos;
 
-	std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
-	// std::string PATH = "E:/Games/crumpet-engine";
 	
 	virtual ~Entity();
+protected:
+	//std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
+	std::string PATH = "E:/Games/crumpet-engine";
 private:
 	std::string m_name;
 

@@ -25,7 +25,8 @@ enum struct SpriteState {
 	STATE_FRONT,
 	STATE_BACK,
 	STATE_JUMP,
-	STATE_CROUCH
+	STATE_CROUCH,
+	STATE_ATTACKING,
 };
 
 class Sprite : public Entity {
@@ -36,7 +37,7 @@ public:
 	SpriteState Spritestate = SpriteState::STATE_DEFAULT;
 
 	bool LoadSpriteTextures(std::string path);
-	void UseSpriteSheet(SpriteState state, int startx, int starty, int width, int height, int seperation, int frames);
+	void UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int seperation, int frames);
 	void AnimateSprite(SpriteState state);
 	void Move();
 

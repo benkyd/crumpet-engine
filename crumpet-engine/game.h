@@ -19,6 +19,5 @@ public:
 	int MsPerUpdate;       // Current updaterate
 
 	virtual ~Game();
-private:
 	SDL_Event m_event;
 };

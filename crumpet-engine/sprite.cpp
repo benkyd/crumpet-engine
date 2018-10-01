@@ -21,7 +21,7 @@ bool Sprite::LoadSpriteTextures(std::string path) {
 	return true;
 }
 
-void Sprite::UseSpriteSheet(SpriteState state, int startx, int starty, int width, int height, int seperation, int frames) {
+void Sprite::UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int seperation, int frames) {
 	m_spriteMaps[state];
 }
 
