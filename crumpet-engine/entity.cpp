@@ -4,7 +4,8 @@ Entity::Entity(std::string name, SDL_Renderer* SDLRenderer)
 	: m_rectPos(0, 0),
 	  m_rectSize(0, 0),
 	  m_col(0, 0, 0, 0),
-	  Pos(0, 0) {
+	  Pos(0, 0),
+      Size(0, 0) {
 
 	this->m_name = name;
 	this->m_SDLRenderer = SDLRenderer;
@@ -15,7 +16,8 @@ Entity::Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawTyp
 	: m_rectPos(0, 0),
 	  m_rectSize(0, 0),
 	  m_col(0, 0, 0, 0),
-	  Pos(0, 0) {
+	  Pos(0, 0),
+	  Size(0, 0) {
 
 	this->m_name = name;
 	this->m_SDLRenderer = SDLRenderer;
@@ -39,6 +41,9 @@ bool Entity::LoadTexture(std::string path) {
 	this->m_textureW = loadedSurface->w;
 	this->m_textureH = loadedSurface->h;
 
+	this->Size.x = loadedSurface->w;
+	this->Size.y = loadedSurface->h;
+
 	SDL_FreeSurface(loadedSurface);
 	return true;
 }
@@ -56,7 +61,7 @@ bool Entity::LoadTexture(SDL_Surface* image) {
 
 void Entity::SetDrawColour(Vec4 col) {
 	this->m_col = col;
-	// SDL_SetRenderDrawColor(m_SDLRenderer, col.x, col.y, col.z, col.w);
+	SDL_SetRenderDrawColor(m_SDLRenderer, col.x, col.y, col.z, col.w);
 }
 
 void Entity::SetRect(Vec2 pos, Vec2 size) {
@@ -75,7 +80,7 @@ void Entity::AddVecPoint(Vec4 point) {
 
 void Entity::Render() {
 	if (Rendertype == RenderType::MODE_TEXTURE) {
-		SDL_Rect renderQuad = { Pos.x, Pos.y, m_textureW, m_textureH };
+		SDL_Rect renderQuad = { Pos.x, Pos.y, Size.x, Size.y };
 		SDL_RenderCopy(m_SDLRenderer, m_texture, NULL, &renderQuad);
 	}
 

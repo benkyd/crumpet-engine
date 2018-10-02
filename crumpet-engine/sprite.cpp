@@ -2,7 +2,8 @@
 
 Sprite::Sprite(std::string name, SDL_Renderer* SDLRenderer, SpriteType mode)
 	: Entity(name, SDLRenderer),
-	  Pos(0, 0) {
+	  Pos(0, 0),
+	  Size(0, 0) {
 
 	this->m_SDLRenderer = SDLRenderer;
 	this->Spritetype = mode;
@@ -23,13 +24,34 @@ bool Sprite::LoadSpriteTextures(std::string path) {
 }
 
 void Sprite::UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int seperation, int frames) {
-	for (auto i = 1; i <= frames; i++) {
-		m_spriteMaps[state].push_back(SpriteClip(startX, startY, &SDL_Rect()));
+	for (int i = 1; i <= frames; i++) {
+		int x = startX * (i + seperation);
+		SDL_Rect temp1 = { x, startY, width, height };
+		SDL_Rect* temp = new SDL_Rect(temp1);
+		m_spriteMaps[state][i] = temp;
+		//temp = { NULL, NULL, NULL, NULL };
 	}
+	Vec2 temp1(width, height);
+	Vec2* temp = new Vec2(temp1);
+	m_spriteSize[state] = temp;
+}
+
+void Sprite::AnimateSprite() {
+	if (m_lastSpritestate == Spritestate) {
+		m_currentFrame++;
+	} else {
+		m_lastSpritestate = Spritestate;
+		m_currentFrame = 0;
+	}
+	if (m_currentFrame >= m_spriteMaps[Spritestate].size()) m_currentFrame = 0;
 }
 
 void Sprite::Render() {
-	
+	SDL_Rect* currentFrameClip = m_spriteMaps[Spritestate][m_currentFrame];
+	Vec2* currentRenderSize = m_spriteSize[Spritestate];
+	SDL_Rect  currentFrameDest = { Pos.x, Pos.y, currentRenderSize->x, currentRenderSize->y};
+
+	SDL_RenderCopy(m_SDLRenderer, m_spriteSheetTexture, currentFrameClip, &currentFrameDest);
 }
 
 Sprite::~Sprite() {

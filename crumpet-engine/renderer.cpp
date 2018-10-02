@@ -22,6 +22,15 @@ void Renderer::RenderEntity(Entity* entity) {
 	entity->Render();
 }
 
+void Renderer::RenderSprite(Sprite* sprite, SpriteState state) {
+	sprite->Spritestate = state;
+	sprite->Render();
+}
+
+void Renderer::RenderSprite(Sprite* sprite) {
+	sprite->Render();
+}
+
 void Renderer::RenderUpdate() {
 	SDL_SetRenderDrawColor(SDLRenderer, 66, 134, 244, 255);
 	SDL_RenderPresent(SDLRenderer);

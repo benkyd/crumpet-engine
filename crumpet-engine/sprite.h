@@ -27,6 +27,11 @@ enum struct SpriteState {
 	STATE_JUMP,
 	STATE_CROUCH,
 	STATE_ATTACKING,
+	STATE_MISC1,
+	STATE_MISC2,
+	STATE_MISC3,
+	STATE_MISC4,
+	STATE_MISC5
 };
 
 class Sprite : public Entity {
@@ -39,27 +44,23 @@ public:
 	bool LoadSpriteTextures(std::string path);
 	void UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int seperation, int frames);
 	void AnimateSprite(SpriteState state);
+	void AnimateSprite();
 	void Move();
 
 	Vec2 Pos;
+	Vec2 Size;
 	void Render();
 
 	virtual ~Sprite();
 private:
-	std::map <SpriteState, std::vector<SpriteClip>> m_spriteMaps;
+	std::map <SpriteState, std::map<int, SDL_Rect*>> m_spriteMaps;
+	std::map <SpriteState, Vec2*> m_spriteSize;
 
 	SDL_Renderer* m_SDLRenderer;
 	SDL_Texture* m_spriteSheetTexture;
 	
+	SpriteState m_lastSpritestate = SpriteState::STATE_DEFAULT;
 	int m_spriteSheetW;
 	int m_spriteSheetH;
-};
-
-struct SpriteClip {
-	int x, y;
-	SDL_Rect* clip;
-
-	SpriteClip(int x, int y, SDL_Rect* clip)
-		: x(x), y(y), clip(clip) {
-	}
+	int m_currentFrame;
 };
