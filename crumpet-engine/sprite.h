@@ -42,9 +42,9 @@ public:
 	SpriteState Spritestate = SpriteState::STATE_DEFAULT;
 
 	bool LoadSpriteTextures(std::string path);
-	void UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int seperation, int frames);
-	void AnimateSprite(SpriteState state);
-	void AnimateSprite();
+	void UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int separation, int frames);
+	void TickAninmation(SpriteState state);
+	void TickAninmation();
 	void Move();
 
 	Vec2 Pos;
@@ -62,5 +62,5 @@ private:
 	SpriteState m_lastSpritestate = SpriteState::STATE_DEFAULT;
 	int m_spriteSheetW;
 	int m_spriteSheetH;
-	int m_currentFrame;
+	int m_currentFrame = 1;
 };
