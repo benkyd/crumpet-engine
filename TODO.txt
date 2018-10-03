@@ -1,0 +1,15 @@
+CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
+
+[ ] Game camera class and redo rendering pipeline
+    [ ] Add rotation and flipping for entities and sprites
+    [ ] Camera class
+    [ ] Game coordinate system
+    [ ] Render to game coordinates instead of screen coordinates
+    [ ] Each entity and sprite should store a reference to Camera
+[ ] GameWorld class with coordinate system
+    [ ] Switch between camera modes on GameWorld
+    [ ] Multiple scenes stored as levels
+    [ ] UI and HUD (maybe later tho)
+[ ] Framerate
+    [ ] Cap framerate
+    [ ] Calculate framerate

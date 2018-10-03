@@ -6,7 +6,7 @@
 #define SCREEN_HEIGHT 600
 
 int main(int argc, char** argv) {
-	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 1, 1000 / 60); // 1000 / 60);
+	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 0, 1000 / 60); // 1000 / 60);
 	Timer timer;
 
 	Sprite sans("sans", game.SDLRenderer, SpriteType::SPRITE_ANIMATED);
@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
 
 	Sprite explosion("explosion", game.SDLRenderer, SpriteType::SPRITE_ANIMATED);
 	explosion.LoadSpriteTextures("/resources/explosion.png");
-	explosion.UseSpriteSheet(SpriteState::STATE_DEFAULT, 1, 260, 65, 63, 0, 16);
+	explosion.UseSpriteSheet(SpriteState::STATE_DEFAULT, 1, 260, 64, 63, 0, 16);
 	explosion.ResizeSpriteStateByFactor(SpriteState::STATE_DEFAULT, 4);
 
 	while (!game.IsDisplayClosed()) {
@@ -27,9 +27,13 @@ int main(int argc, char** argv) {
 		if (timer.GetTimeElapsed() >= game.TargetMsPerUpdate) { // Constant update rate, despite framerate
 
 			const Uint8 *state = SDL_GetKeyboardState(NULL);
-			if (state[SDL_SCANCODE_D]) sans.Spritestate = SpriteState::STATE_RIGHT;
-			else if (state[SDL_SCANCODE_A]) sans.Spritestate = SpriteState::STATE_LEFT;
-			else sans.Spritestate = SpriteState::STATE_FRONT;
+			if (state[SDL_SCANCODE_D]) {
+				sans.Spritestate = SpriteState::STATE_RIGHT;
+				sans.Pos.x += 10;
+			} else if (state[SDL_SCANCODE_A]) {
+				sans.Spritestate = SpriteState::STATE_LEFT;
+				sans.Pos.x -= 10;
+			} else sans.Spritestate = SpriteState::STATE_FRONT;
 			
 			if (timer.ticks % 5 == 0) {
 				sans.TickAninmation();
