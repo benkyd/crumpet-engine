@@ -125,16 +125,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameWorld.cpp" />
+    <ClCompile Include="level.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="gameWorld.h" />
+    <ClInclude Include="level.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="mathHelper.h" />
     <ClInclude Include="renderer.h" />
