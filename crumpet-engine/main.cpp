@@ -14,6 +14,12 @@ int main(int argc, char** argv) {
 	sans.UseSpriteSheet(SpriteState::STATE_FRONT, 30, 9, 230, 300, 10, 4);
 	sans.UseSpriteSheet(SpriteState::STATE_RIGHT, 30, 320, 170, 300, 10, 4);
 	sans.UseSpriteSheet(SpriteState::STATE_LEFT, 40, 640, 170, 300, 10, 4);
+	sans.Pos = Vec2(100, 100);
+
+	Sprite explosion("explosion", game.SDLRenderer, SpriteType::SPRITE_ANIMATED);
+	explosion.LoadSpriteTextures("/resources/explosion.png");
+	explosion.UseSpriteSheet(SpriteState::STATE_DEFAULT, 1, 260, 65, 63, 0, 16);
+	explosion.ResizeSpriteStateByFactor(SpriteState::STATE_DEFAULT, 4);
 
 	while (!game.IsDisplayClosed()) {
 		game.PollEvents();
@@ -27,6 +33,7 @@ int main(int argc, char** argv) {
 			
 			if (timer.ticks % 5 == 0) {
 				sans.TickAninmation();
+				explosion.TickAninmation();
 			}
 
 			timer.Tick();
@@ -34,6 +41,7 @@ int main(int argc, char** argv) {
 
 		game.RenderClear();
 		game.RenderSprite(&sans);
+		game.RenderSprite(&explosion);
 		game.RenderUpdate();
 	}
 

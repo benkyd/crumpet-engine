@@ -1,61 +1,31 @@
 #pragma once
 
 struct Vec4 {
-	Vec4(int x, int y, int z, int w) {
-		this->x = x;
-		this->y = y;
-		this->z = z;
-		this->w = w;
-	}
-
 	int x, y, z, w;
+	Vec4(int x, int y, int z, int w) : x(x), y(y), z(z), w(w) {}
 };
 
 struct Vec4f {
-	Vec4f(float x, float y, float z, float w) {
-		this->x = x;
-		this->y = y;
-		this->z = z;
-		this->w = w;
-	}
-
 	float x, y, z, w;
+	Vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 };
 
 struct Vec3 {
-	Vec3(int x, int y, int z) {
-		this->x = x;
-		this->y = y;
-		this->z = z;
-	}
-
 	int x, y, z;
+	Vec3(int x, int y, int z) : x(x), y(y), z(z) {}
 };
 
 struct Vec3f {
-	Vec3f(float x, float y, float z) {
-		this->x = x;
-		this->y = y;
-		this->z = z;
-	}
-
 	float x, y, z;
+	Vec3f(float x, float y, float z) : x(x), y(y), z(z) {}
 };
 
 struct Vec2 {
-	Vec2(int x, int y) {
-		this->x = x;
-		this->y = y;
-	}
-
 	int x, y;
+	Vec2(int x, int y) : x(x), y(y) {}
 };
 
 struct Vec2f {
-	Vec2f(float x, float y) {
-		this->x = x;
-		this->y = y;
-	}
-
 	float x, y;
+	Vec2f(float x, float y) : x(x), y(y) {}
 };

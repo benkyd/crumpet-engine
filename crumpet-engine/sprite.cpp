@@ -2,8 +2,7 @@
 
 Sprite::Sprite(std::string name, SDL_Renderer* SDLRenderer, SpriteType mode)
 	: Entity(name, SDLRenderer),
-	  Pos(0, 0),
-	  Size(0, 0) {
+	  Pos(0, 0) {
 
 	this->m_SDLRenderer = SDLRenderer;
 	this->Spritetype = mode;
@@ -53,6 +52,31 @@ void Sprite::TickAninmation() {
 		m_currentFrame = 1;
 	}
 	if (m_currentFrame > m_spriteMaps[Spritestate].size()) m_currentFrame = 1;
+}
+
+// TODO: get this and the next method done correct
+void Sprite::ResizeSprites(Vec2* newSize) {
+	for (auto i = 0; i < m_spriteSize.size(); i++) {
+		m_spriteSize[SpriteState(i)]->x = newSize->x;
+		m_spriteSize[SpriteState(i)]->y = newSize->y;
+	}
+}
+
+void Sprite::ResizeSpritesByFactor(float factor) {
+	for (auto i = 0; i < m_spriteSize.size(); i++) {
+		m_spriteSize[SpriteState(i)]->x *= factor;
+		m_spriteSize[SpriteState(i)]->y *= factor;
+	}
+}
+
+void Sprite::ResizeSpriteState(SpriteState state, Vec2* newSize) {
+	m_spriteSize[state]->x = newSize->x;
+	m_spriteSize[state]->y = newSize->y;
+}
+
+void Sprite::ResizeSpriteStateByFactor(SpriteState state, float factor) {
+	m_spriteSize[state]->x *= factor;
+	m_spriteSize[state]->y *= factor;
 }
 
 void Sprite::Render() {

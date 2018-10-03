@@ -17,7 +17,11 @@ enum struct SpriteType {
 enum struct SpriteState {
 	STATE_DEFAULT,
 	STATE_LEFT,
+	STATE_ACCELERATING_LEFT,
+	STATE_RUNNING_LEFT,
 	STATE_RIGHT,
+	STATE_ACCELERATING_RIGHT,
+	STATE_RUNNING_RIGHT,
 	STATE_UP,
 	STATE_DOWN,
 	STATE_TOP,
@@ -25,8 +29,10 @@ enum struct SpriteState {
 	STATE_FRONT,
 	STATE_BACK,
 	STATE_JUMP,
+	STATE_CROUCHING,
 	STATE_CROUCH,
 	STATE_ATTACKING,
+	STATE_DEATH,
 	STATE_MISC1,
 	STATE_MISC2,
 	STATE_MISC3,
@@ -45,10 +51,15 @@ public:
 	void UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int separation, int frames);
 	void TickAninmation(SpriteState state);
 	void TickAninmation();
+
+	void ResizeSprites(Vec2* newSize);
+	void ResizeSpritesByFactor(float factor);
+	void ResizeSpriteState(SpriteState state, Vec2* newSize);
+	void ResizeSpriteStateByFactor(SpriteState state, float factor);
+	
 	void Move();
 
 	Vec2 Pos;
-	Vec2 Size;
 	void Render();
 
 	virtual ~Sprite();
