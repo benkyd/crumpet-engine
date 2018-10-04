@@ -7,7 +7,6 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="logger.cpp" />
-    <ClCompile Include="camera.cpp" />
     <ClCompile Include="gameWorld.cpp" />
     <ClCompile Include="level.cpp" />
   </ItemGroup>

@@ -14,15 +14,24 @@ public:
 	
 	void RenderEntity(Entity* entity);
 
-	void TickSpriteAnimation(Sprite* sprite);
 	void RenderSprite(Sprite* sprite, SpriteState state);
 	void RenderSprite(Sprite* sprite);
+
+	void SetRendererColour(Vec4* col);
+
+	void RenderEmptyRect();
+	void RenderFilledRect();
+	void RenderLines();
+	void RenderTexture();
 
 	void RenderUpdate();
 	void RenderClear();
 
 	bool IsDisplayClosed();
 	void CloseDisplay();
+
+	int Width, Height;
+
 	virtual ~Renderer();
 private:
 	SDL_Window *m_window;

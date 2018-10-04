@@ -45,8 +45,8 @@ public:
 	
 	virtual ~Entity();
 protected:
-	// std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
-	std::string PATH = "E:/Games/crumpet-engine";
+	std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
+	//std::string PATH = "E:/Games/crumpet-engine";
 private:
 	std::string m_name;
 

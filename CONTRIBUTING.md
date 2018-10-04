@@ -3,6 +3,8 @@ First off, we thank you for taking the time to contribute to the crumpet engine 
 
 When contributing or submitting pull requests follow these guidelines or your contribution will not be taken seriously.
 
+If you want to contribute but don't know what to do, see TODO.txt for a list of tasks that need to be complete, but make sure when you complete one you mark it as such, do not remove it from the list.
+
 ## Make sure your code is
 - Functional
 - Maintainable and Scalable

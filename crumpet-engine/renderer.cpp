@@ -15,6 +15,9 @@ Renderer::Renderer(std::string title, int width, int height, int targetFramerate
 	if (targetFramerate == 1)
 		SDLRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 	
+	this->Width = width;
+	this->Height = height;
+
 	isClosed = false;
 }
 
@@ -29,6 +32,14 @@ void Renderer::RenderSprite(Sprite* sprite, SpriteState state) {
 
 void Renderer::RenderSprite(Sprite* sprite) {
 	sprite->Render();
+}
+
+void Renderer::SetRendererColour(Vec4* col) {
+
+}
+
+void Renderer::RenderEmptyRect() {
+
 }
 
 void Renderer::RenderUpdate() {

@@ -1,10 +1,14 @@
 CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
 
+[ ] Fix entity / sprite resizing
+[ ] Add sprite methods to entity
 [ ] Game camera class and redo rendering pipeline
     [ ] Add rotation and flipping for entities and sprites
-    [ ] Camera class
+    [x] Camera class
+    [ ] Make the camera class control the rendering of the active scene
+    [ ] Change every class to use vector pointers and remove the initalization lists
     [ ] Game coordinate system
-    [ ] Render to game coordinates instead of screen coordinates
+    [ ] Render to GameWorld coordinates instead of screen coordinates
     [ ] Each entity and sprite should store a reference to Camera
 [ ] GameWorld class with coordinate system
     [ ] Switch between camera modes on GameWorld
