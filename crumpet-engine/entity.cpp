@@ -13,11 +13,11 @@ Entity::Entity(std::string name, SDL_Renderer* SDLRenderer)
 }
 
 Entity::Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawType)
-	: m_rectPos(0, 0),
-	  m_rectSize(0, 0),
-	  m_col(0, 0, 0, 0),
-	  Pos(0, 0),
-	  Size(0, 0) {
+	: m_rectPos(0, 0)
+	, m_rectSize(0, 0)
+    , m_col(0, 0, 0, 0)
+	, Pos(0, 0)
+	, Size(0, 0) {
 
 	this->m_name = name;
 	this->m_SDLRenderer = SDLRenderer;
