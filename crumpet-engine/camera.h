@@ -1,28 +1,20 @@
 #pragma once
 
 #include <vector>
-#include <SDL.h>
 #include "mathHelper.h"
-
-struct AspectRatio {
-	int w, h;
-	AspectRatio(int w, int h) : w(w), h(h) {}
-};
+#include "rect.h"
 
 class Camera {
 public:
-	Camera() {
-		this->Zoom = 1.0f;
-		this->Pos = new Vec2(0, 0);
-		this->Rotation = 1.0f;
-		this->Aspectratio = new AspectRatio(16, 9);
-	}
-	Vec2* Pos;
-	float Zoom;
-	float Rotation;
-	AspectRatio* Aspectratio;
+	Camera();
+	void TranslateView(Vec2* offset);
+	void TranslateViewX(int x);
+	void TranslateViewY(int y);
+	void SetSize(Vec2* size);
+
+	void SetCenter(Vec2* point);
 
 	virtual ~Camera();
 private:
-	SDL_Rect* m_veiw;
+	Rect* m_view;
 };

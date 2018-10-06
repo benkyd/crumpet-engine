@@ -1,8 +1,8 @@
 #include "sprite.h"
 
 Sprite::Sprite(std::string name, SDL_Renderer* SDLRenderer, SpriteType mode)
-	: Entity(name, SDLRenderer),
-	  Pos(0, 0) {
+	: Entity(name, SDLRenderer)
+	, Pos(0, 0) {
 
 	this->m_SDLRenderer = SDLRenderer;
 	this->Spritetype = mode;
@@ -55,20 +55,26 @@ void Sprite::TickAninmation() {
 }
 
 // TODO: get this and the next method done correct
+//at the moment the SpriteState(i) will just check for
+//sprites with that state, and if they exist it will
+//resize them, it needs to resize only the sprites
+//in the std::map m_spriteSize
 void Sprite::ResizeSprites(Vec2* newSize) {
-	for (auto i = 0; i < m_spriteSize.size(); i++) {
+	for (unsigned int i = 0; i < m_spriteSize.size(); i++) {
 		m_spriteSize[SpriteState(i)]->x = newSize->x;
 		m_spriteSize[SpriteState(i)]->y = newSize->y;
 	}
 }
 
 void Sprite::ResizeSpritesByFactor(float factor) {
-	for (auto i = 0; i < m_spriteSize.size(); i++) {
+	for (unsigned int i = 0; i < m_spriteSize.size(); i++) {
 		m_spriteSize[SpriteState(i)]->x *= factor;
 		m_spriteSize[SpriteState(i)]->y *= factor;
 	}
 }
 
+//These 2 methods work as they change a spesific and predefined
+//sprite state
 void Sprite::ResizeSpriteState(SpriteState state, Vec2* newSize) {
 	m_spriteSize[state]->x = newSize->x;
 	m_spriteSize[state]->y = newSize->y;
@@ -77,6 +83,11 @@ void Sprite::ResizeSpriteState(SpriteState state, Vec2* newSize) {
 void Sprite::ResizeSpriteStateByFactor(SpriteState state, float factor) {
 	m_spriteSize[state]->x *= factor;
 	m_spriteSize[state]->y *= factor;
+}
+
+void Sprite::Move(Vec2* offset) {
+	Pos.x += offset->x;
+	Pos.y += offset->y;
 }
 
 void Sprite::Render() {

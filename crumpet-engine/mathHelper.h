@@ -1,5 +1,16 @@
 #pragma once
 
+const float DEG2RAD = 0.01745329251994329576923690768f;
+const float RAD2DEG = 57.2957795130823208767981548141f;
+
+inline float ToRadian(const float Degree) {
+	return (Degree * DEG2RAD);
+}
+
+inline float ToDegree(const float Radian) {
+	return (Radian * RAD2DEG);
+}
+
 struct Vec4 {
 	int x, y, z, w;
 	Vec4(int x, int y, int z, int w) : x(x), y(y), z(z), w(w) {}

@@ -57,7 +57,9 @@ public:
 	void ResizeSpriteState(SpriteState state, Vec2* newSize);
 	void ResizeSpriteStateByFactor(SpriteState state, float factor);
 	
-	void Move();
+	void Move(Vec2* offest);
+	void MoveX(int offest);
+	void MoveY(int offest);
 
 	Vec2 Pos;
 	void Render();

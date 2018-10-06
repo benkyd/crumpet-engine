@@ -9,6 +9,7 @@
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="gameWorld.cpp" />
     <ClCompile Include="level.cpp" />
+    <ClCompile Include="rect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -44,6 +45,9 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="level.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="rect.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

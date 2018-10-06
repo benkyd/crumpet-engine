@@ -9,9 +9,6 @@ int main(int argc, char** argv) {
 	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 0, 1000 / 60); // 1000 / 60);
 	Timer timer;
 
-	Entity bay("bay", game.SDLRenderer);
-	bay.LoadTexture("/resources/bay.jpg");
-
 	Sprite sans("sans", game.SDLRenderer, SpriteType::SPRITE_ANIMATED);
 	sans.LoadSpriteTextures("/resources/sans-undertale-spritesheet.png");
 	sans.UseSpriteSheet(SpriteState::STATE_FRONT, 30, 9, 230, 300, 10, 4);
@@ -48,7 +45,6 @@ int main(int argc, char** argv) {
 
 		game.RenderClear();
 		game.RenderSprite(&sans);
-		game.RenderEntity(&bay);
 		game.RenderSprite(&explosion);
 		game.RenderUpdate();
 	}

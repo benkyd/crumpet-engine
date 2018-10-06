@@ -2,11 +2,25 @@ CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
 
 [ ] Fix entity / sprite resizing
 [ ] Add sprite methods to entity
+[ ] Logger class
+    [ ] Maybe use preprocessor statements
+    [ ] Time and other useful logging methods
+    [ ] Empty constructor, instance method
+[ ] Rect class to extend SDL_Rect and add conversion capabilitys, colision and intersection to it
+    [ ] Camera class to use Rect* instead of SLD_Rect*
+    [ ] Add and subtract (+ -) operators to add rectangles and subtract them together
+    [ ] Equal and not equal (!= ==) operators to return true / flase if the rectangles match
+    [ ] ToString function for easy logging
+    [ ] Setposition and translate methods
+    [ ] Intersects, contains methods 
+    [ ] x,y,w,h properties
+    [ ] Center point
+        [ ] Maybe a point class
 [ ] Game camera class and redo rendering pipeline
     [ ] Add rotation and flipping for entities and sprites
     [x] Camera class
     [ ] Make the camera class control the rendering of the active scene
-    [ ] Change every class to use vector pointers and remove the initalization lists
+    [ ] Change every class / constructor to use vector pointers and remove the initalization lists
     [ ] Game coordinate system
     [ ] Render to GameWorld coordinates instead of screen coordinates
     [ ] Each entity and sprite should store a reference to Camera

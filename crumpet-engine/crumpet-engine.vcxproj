@@ -131,6 +131,7 @@
     <ClCompile Include="level.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="rect.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="sprite.cpp" />
   </ItemGroup>
@@ -142,6 +143,7 @@
     <ClInclude Include="level.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="mathHelper.h" />
+    <ClInclude Include="rect.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="timer.h" />
