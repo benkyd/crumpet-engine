@@ -130,7 +130,6 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameWorld.cpp" />
     <ClCompile Include="level.cpp" />
-    <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rect.cpp" />
     <ClCompile Include="renderer.cpp" />
@@ -142,7 +141,6 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gameWorld.h" />
     <ClInclude Include="level.h" />
-    <ClInclude Include="logger.h" />
     <ClInclude Include="mathHelper.h" />
     <ClInclude Include="rect.h" />
     <ClInclude Include="renderer.h" />

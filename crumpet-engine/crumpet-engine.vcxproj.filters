@@ -6,7 +6,6 @@
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="sprite.cpp" />
-    <ClCompile Include="logger.cpp" />
     <ClCompile Include="gameWorld.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="rect.cpp" />
@@ -34,9 +33,6 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="timer.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="logger.h">
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
