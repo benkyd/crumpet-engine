@@ -17,7 +17,7 @@ CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
     [x] x,y,w,h properties
     [ ] Switch other classes to use this instead of SDL_Rect* and make sure to update the render pipeline
     [x] Center point
-        [ ] Maybe a point class
+        [-] Maybe a point class - used Vec2*
 [ ] Game camera class and redo rendering pipeline
     [ ] Add rotation and flipping for entities and sprites
     [x] Camera class
