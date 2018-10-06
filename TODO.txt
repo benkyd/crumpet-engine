@@ -8,15 +8,15 @@ CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
     [ ] Time and other useful logging methods
     [ ] Empty constructor, instance method
 [ ] Rect class to extend SDL_Rect and add conversion capabilitys, colision and intersection to it
-    [ ] Camera class to use Rect* instead of SLD_Rect*
-    [ ] Add and subtract (+ -) operators to add rectangles and subtract them together
-    [ ] Equal and not equal (!= ==) operators to return true / flase if the rectangles match
-    [ ] ToString function for easy logging
-    [ ] Setposition and translate methods
-    [ ] Intersects, contains methods 
-    [ ] x,y,w,h properties
+    [x] Camera class to use Rect* instead of SLD_Rect*
+    [x] Add and subtract (+ -) operators to add rectangles and subtract them together
+    [x] Equal and not equal (!= ==) operators to return true / flase if the rectangles match
+    [x] ToString function for easy logging
+    [x] Setposition and translate methods
+    [x] Intersects, contains methods 
+    [x] x,y,w,h properties
     [ ] Switch other classes to use this instead of SDL_Rect* and make sure to update the render pipeline
-    [ ] Center point
+    [x] Center point
         [ ] Maybe a point class
 [ ] Game camera class and redo rendering pipeline
     [ ] Add rotation and flipping for entities and sprites
