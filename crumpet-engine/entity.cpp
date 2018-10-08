@@ -1,26 +1,14 @@
 #include "entity.h"
 
-Entity::Entity(std::string name, SDL_Renderer* SDLRenderer) 
-	: m_rectPos(0, 0)
-	,  m_rectSize(0, 0)
-	,  m_col(0, 0, 0, 0)
-	,  Pos(0, 0)
-    ,  Size(0, 0) {
+Entity::Entity(std::string name) {
 
 	this->m_name = name;
-	this->m_SDLRenderer = SDLRenderer;
 	this->Rendertype = RenderType::MODE_TEXTURE;
 }
 
-Entity::Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawType)
-	: m_rectPos(0, 0)
-	, m_rectSize(0, 0)
-    , m_col(0, 0, 0, 0)
-	, Pos(0, 0)
-	, Size(0, 0) {
+Entity::Entity(std::string name, PolyDrawType drawType) {
 
 	this->m_name = name;
-	this->m_SDLRenderer = SDLRenderer;
 	this->Drawtype = drawType;
 	this->Rendertype = RenderType::MODE_POLYGON;
 }
@@ -60,21 +48,18 @@ bool Entity::LoadTexture(SDL_Surface* image) {
 }
 
 void Entity::SetDrawColour(Vec4 col) {
-	this->m_col = col;
-	SDL_SetRenderDrawColor(m_SDLRenderer, col.x, col.y, col.z, col.w);
+	
 }
 
-void Entity::SetRect(Vec2 pos, Vec2 size) {
-	m_rectPos = pos;
-	m_rectSize = size;
-	m_rect = { pos.x, pos.y, size.x, size.y };
+void Entity::SetRect(Rect* rect) {
+	this->m_rect = rect;
 }
 
-void Entity::SetVecPoints(std::vector<Vec4> points) {
+void Entity::SetVecPoints(std::vector<Vec4*> points) {
 	this->m_linePoints = points;
 }
 
-void Entity::AddVecPoint(Vec4 point) {
+void Entity::AddVecPoint(Vec4* point) {
 	this->m_linePoints.push_back(point);
 }
 

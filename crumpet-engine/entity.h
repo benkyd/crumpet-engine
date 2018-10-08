@@ -5,6 +5,7 @@
 #include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
+#include "rect.h"
 #include "mathHelper.h"
 
 enum struct RenderType {
@@ -22,8 +23,8 @@ enum struct PolyDrawType {
 
 class Entity {
 public:
-	Entity(std::string name, SDL_Renderer* SDLRenderer); // Texture overload
-	Entity(std::string name, SDL_Renderer* SDLRenderer, PolyDrawType drawType); // Polygon overload
+	Entity(std::string name); // Texture overload
+	Entity(std::string name, PolyDrawType drawType); // Polygon overload
 
 	RenderType Rendertype = RenderType::MODE_DEFAULT;
 	PolyDrawType Drawtype = PolyDrawType::DRAW_DEFAULT;
@@ -33,16 +34,16 @@ public:
 
 	void SetDrawColour(Vec4 col);
 
-	void SetRect(Vec2 pos, Vec2 size);
+	void SetRect(Rect* rect);
 
-	void SetVecPoints(std::vector<Vec4> points);
-	void AddVecPoint(Vec4 point);
+	void SetVecPoints(std::vector<Vec4*> points);
+	void AddVecPoint(Vec4* point);
 
 	void Render();
 
-	Vec2 Pos;
-	Vec2 Size;
-	
+	Vec2* Pos;
+	Vec2* Size;
+
 	virtual ~Entity();
 protected:
 	std::string PATH = "C:/Users/Ben/Desktop/crumpet-engine";
@@ -50,17 +51,11 @@ protected:
 private:
 	std::string m_name;
 
-	Vec2 m_rectPos;
-	Vec2 m_rectSize;
-	SDL_Rect m_rect;
+	Rect* m_rect;
+	Vec4* m_col;
 
-	Vec4 m_col;
-
-	std::vector<Vec4> m_linePoints;
+	std::vector<Vec4*> m_linePoints;
 	SDL_Texture* m_texture;
 	int m_textureW;
-	int m_textureH;
-
-	SDL_Renderer* m_SDLRenderer;
+	int m_textureH
 };
-
