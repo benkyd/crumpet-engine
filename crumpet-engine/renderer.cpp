@@ -35,11 +35,45 @@ void Renderer::RenderSprite(Sprite* sprite) {
 }
 
 void Renderer::SetRendererColour(Vec4* col) {
-
+	SDL_SetRenderDrawColor(SDLRenderer, col->x, col->y, col->z, col->w);
 }
 
-void Renderer::RenderEmptyRect() {
+void Renderer::RenderEmptyRect(Rect* rect) {
+	SDL_RenderDrawRect(SDLRenderer, rect->ToSDLRect);
+}
 
+void Renderer::RenderFilledRect(Rect* rect) {
+	SDL_RenderFillRect(SDLRenderer, rect->ToSDLRect);
+}
+
+void Renderer::RenderLines(std::vector<Vec4*> points) {
+	for (unsigned int i = 0; i < points.size(); i++) {
+		SDL_RenderDrawLine(SDLRenderer, points[i]->x, points[i]->y, points[i]->z, points[i]->w);
+	}
+}
+
+void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture) {
+	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect());
+}
+
+void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface) {
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLRenderer, surface);
+	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect());
+	SDL_DestroyTexture(texture);
+}
+
+void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture, const double angle, Vec2* rotationCenter) {
+	SDL_Point temp = { rotationCenter->x, rotationCenter->y };
+	SDL_Point* center = new SDL_Point(temp);
+	SDL_RenderCopyEx(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect(), angle, center, SDL_FLIP_NONE);
+}
+
+void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface, const double angle, Vec2* rotationCenter) {
+	SDL_Point temp = { rotationCenter->x, rotationCenter->y };
+	SDL_Point* center = new SDL_Point(temp);
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLRenderer, surface);
+	SDL_RenderCopyEx(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect(), angle, center, SDL_FLIP_NONE);
+	SDL_DestroyTexture(texture);
 }
 
 void Renderer::RenderUpdate() {

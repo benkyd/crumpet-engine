@@ -2,9 +2,11 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <SDL.h>
 #include "entity.h"
 #include "sprite.h"
+#include "rect.h"
 
 class Renderer {
 public:
@@ -19,10 +21,13 @@ public:
 
 	void SetRendererColour(Vec4* col);
 
-	void RenderEmptyRect();
-	void RenderFilledRect();
-	void RenderLines();
-	void RenderTexture();
+	void RenderEmptyRect(Rect* rect);
+	void RenderFilledRect(Rect* rect);
+	void RenderLines(std::vector<Vec4*> points);
+	void RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture);
+	void RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface);
+	void RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* surface, const double angle, Vec2* rotationCenter);
+	void RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface, const double angle, Vec2* rotationCenter);
 
 	void RenderUpdate();
 	void RenderClear();
