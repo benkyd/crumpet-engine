@@ -21,29 +21,16 @@ Renderer::Renderer(std::string title, int width, int height, int targetFramerate
 	isClosed = false;
 }
 
-void Renderer::RenderEntity(Entity* entity) {
-	entity->Render();
-}
-
-void Renderer::RenderSprite(Sprite* sprite, SpriteState state) {
-	sprite->Spritestate = state;
-	sprite->Render();
-}
-
-void Renderer::RenderSprite(Sprite* sprite) {
-	sprite->Render();
-}
-
 void Renderer::SetRendererColour(Vec4* col) {
 	SDL_SetRenderDrawColor(SDLRenderer, col->x, col->y, col->z, col->w);
 }
 
 void Renderer::RenderEmptyRect(Rect* rect) {
-	SDL_RenderDrawRect(SDLRenderer, rect->ToSDLRect);
+	SDL_RenderDrawRect(SDLRenderer, rect->ToSDLRect());
 }
 
 void Renderer::RenderFilledRect(Rect* rect) {
-	SDL_RenderFillRect(SDLRenderer, rect->ToSDLRect);
+	SDL_RenderFillRect(SDLRenderer, rect->ToSDLRect());
 }
 
 void Renderer::RenderLines(std::vector<Vec4*> points) {

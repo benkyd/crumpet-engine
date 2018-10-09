@@ -1,7 +1,8 @@
 #include "sprite.h"
 
 Sprite::Sprite(std::string name, Renderer* renderer, SpriteType mode)
-	: Entity(name, renderer) {
+	: Entity(name, renderer)
+	, Pos(new Vec2(0, 0)) {
 
 	this->Spritetype = mode;
 }

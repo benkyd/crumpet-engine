@@ -4,9 +4,6 @@
 #include <SDL.h>
 #include "renderer.h"
 #include "camera.h"
-#include "timer.h"
-#include "entity.h"
-#include "sprite.h"
 
 class Game {
 public:

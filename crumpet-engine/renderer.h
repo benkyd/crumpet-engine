@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 #include <SDL.h>
-#include "entity.h"
-#include "sprite.h"
 #include "rect.h"
 
 class Renderer {
@@ -14,13 +12,7 @@ public:
 
 	SDL_Renderer *SDLRenderer;
 	
-	void RenderEntity(Entity* entity);
-
-	void RenderSprite(Sprite* sprite, SpriteState state);
-	void RenderSprite(Sprite* sprite);
-
 	void SetRendererColour(Vec4* col);
-
 	void RenderEmptyRect(Rect* rect);
 	void RenderFilledRect(Rect* rect);
 	void RenderLines(std::vector<Vec4*> points);

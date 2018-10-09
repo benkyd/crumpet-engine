@@ -1,10 +1,12 @@
 #include "rect.h"
 
-Rect::Rect() {
+Rect::Rect()
+	: rect(new SDL_Rect{ 0, 0, 0, 0 }) {
 	Clear();
 }
 
-Rect::Rect(int x, int y, int w, int h) {
+Rect::Rect(int x, int y, int w, int h) 
+	: rect(new SDL_Rect{ x, y, w, h }) {
 	SetRect(x, y, w, h);
 }
 
@@ -115,7 +117,15 @@ int Rect::Area() {
 }
 
 void Rect::SetRect(int x, int y, int w, int h) {
+	this->x = x;
+	this->y = y;
+	this->w = w;
+	this->h = h;
 
+	this->rect->x = x;
+	this->rect->y = y;
+	this->rect->w = w;
+	this->rect->h = h;
 }
 
 void Rect::SetSize(Vec2* size) {

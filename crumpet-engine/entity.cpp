@@ -1,7 +1,12 @@
 #include "entity.h"
 
-Entity::Entity(std::string name, Renderer* renderer) {
+Entity::Entity(std::string name, Renderer* renderer)
+	: Pos(new Vec2(0, 0))
+	, Size(new Vec2(0, 0))
+	, m_col(new Vec4(0, 0, 0, 255))
+	, m_rect(new Rect(0, 0, 0, 0)) {
 
+	this->m_renderer = renderer;
 	this->m_name = name;
 	this->Rendertype = RenderType::MODE_TEXTURE;
 }
@@ -47,8 +52,8 @@ bool Entity::LoadTexture(SDL_Surface* image) {
 	return true;
 }
 
-void Entity::SetDrawColour(Vec4 col) {
-	
+void Entity::SetDrawColour(Vec4* col) {
+	m_renderer->SetRendererColour(col);
 }
 
 void Entity::SetRect(Rect* rect) {

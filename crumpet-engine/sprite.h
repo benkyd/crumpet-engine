@@ -38,7 +38,7 @@ enum struct SpriteState {
 class Sprite : public Entity {
 public:
 	Sprite(std::string name, Renderer* renderer, SpriteType mode);
-	
+
 	SpriteType Spritetype = SpriteType::SPRITE_DEFAULT;
 	SpriteState Spritestate = SpriteState::STATE_DEFAULT;
 
@@ -51,7 +51,7 @@ public:
 	void ResizeSpritesByFactor(float factor);
 	void ResizeSpriteState(SpriteState state, Vec2* newSize);
 	void ResizeSpriteStateByFactor(SpriteState state, float factor);
-	
+
 	void Move(Vec2* offest);
 	void MoveX(int offest);
 	void MoveY(int offest);
@@ -61,11 +61,11 @@ public:
 
 	virtual ~Sprite();
 private:
-	std::map <SpriteState, std::map<int, Rect*>> m_spriteMaps;
-	std::map <SpriteState, Vec2*> m_spriteSize;
+	std::map<SpriteState, std::map<int, Rect*>> m_spriteMaps;
+	std::map<SpriteState, Vec2*> m_spriteSize;
 
 	SDL_Texture* m_spriteSheetTexture;
-	
+
 	SpriteState m_lastSpritestate = SpriteState::STATE_DEFAULT;
 	int m_spriteSheetW;
 	int m_spriteSheetH;

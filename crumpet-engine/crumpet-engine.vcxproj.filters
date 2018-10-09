@@ -47,5 +47,8 @@
     <ClInclude Include="rect.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="crumpet-engine.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

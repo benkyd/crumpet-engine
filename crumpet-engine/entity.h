@@ -1,13 +1,12 @@
 #pragma once
 
-#include <string>
 #include <iostream>
+#include <string>
 #include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
-#include "renderer.h"
 #include "rect.h"
-#include "mathHelper.h"
+#include "game.h"
 
 enum struct RenderType {
 	MODE_DEFAULT,
@@ -33,7 +32,7 @@ public:
 	bool LoadTexture(std::string path);
 	bool LoadTexture(SDL_Surface* image);
 
-	void SetDrawColour(Vec4 col);
+	void SetDrawColour(Vec4* col);
 
 	void SetRect(Rect* rect);
 
