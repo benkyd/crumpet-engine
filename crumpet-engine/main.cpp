@@ -34,7 +34,9 @@ int main(int argc, char** argv) {
 				sans.Spritestate = SpriteState::STATE_LEFT;
 				sans.Pos->x -= 10;
 			} else sans.Spritestate = SpriteState::STATE_FRONT;
-			
+
+
+
 			if (timer.ticks % 5 == 0) {
 				sans.TickAninmation();
 				explosion.TickAninmation();

@@ -42,4 +42,3 @@ private:
 	SDL_Window *m_window;
 	bool isClosed;
 };
-

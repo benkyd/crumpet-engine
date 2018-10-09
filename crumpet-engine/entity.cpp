@@ -1,12 +1,12 @@
 #include "entity.h"
 
-Entity::Entity(std::string name) {
+Entity::Entity(std::string name, Renderer* renderer) {
 
 	this->m_name = name;
 	this->Rendertype = RenderType::MODE_TEXTURE;
 }
 
-Entity::Entity(std::string name, PolyDrawType drawType) {
+Entity::Entity(std::string name, Renderer* renderer, PolyDrawType drawType) {
 
 	this->m_name = name;
 	this->Drawtype = drawType;
@@ -20,7 +20,7 @@ bool Entity::LoadTexture(std::string path) {
 		return false;
 	}
 
-	m_texture = SDL_CreateTextureFromSurface(m_SDLRenderer, loadedSurface);
+	m_texture = SDL_CreateTextureFromSurface(m_renderer->SDLRenderer, loadedSurface);
 	if (m_texture == NULL) {
 		std::cout << "Unable to create texture from:" << (PATH + path).c_str() << " SDL ERROR: " << SDL_GetError() << std::endl;
 		return false;
@@ -29,15 +29,15 @@ bool Entity::LoadTexture(std::string path) {
 	this->m_textureW = loadedSurface->w;
 	this->m_textureH = loadedSurface->h;
 
-	this->Size.x = loadedSurface->w;
-	this->Size.y = loadedSurface->h;
+	this->Size->x = loadedSurface->w;
+	this->Size->y = loadedSurface->h;
 
 	SDL_FreeSurface(loadedSurface);
 	return true;
 }
 
 bool Entity::LoadTexture(SDL_Surface* image) {
-	m_texture = SDL_CreateTextureFromSurface(m_SDLRenderer, image);
+	m_texture = SDL_CreateTextureFromSurface(m_renderer->SDLRenderer, image);
 	if (m_texture == NULL) {
 		std::cout << "Unable to create texture SDL ERROR: " << SDL_GetError() << std::endl;
 		return false;
@@ -65,22 +65,19 @@ void Entity::AddVecPoint(Vec4* point) {
 
 void Entity::Render() {
 	if (Rendertype == RenderType::MODE_TEXTURE) {
-		SDL_Rect renderQuad = { Pos.x, Pos.y, Size.x, Size.y };
-		SDL_RenderCopy(m_SDLRenderer, m_texture, NULL, &renderQuad);
+		Rect renderQuad(Pos->x, Pos->y, Size->x, Size->y);
+		m_renderer->RenderTexture(m_rect, &renderQuad, m_texture);
 	}
 
-
 	if (Rendertype == RenderType::MODE_POLYGON) {
-		SDL_SetRenderDrawColor(m_SDLRenderer, m_col.x, m_col.y, m_col.z, m_col.w);
+		m_renderer->SetRendererColour(m_col);
 		if (Drawtype == PolyDrawType::DRAW_FILLED_RECT)
-			SDL_RenderFillRect(m_SDLRenderer, &m_rect);
+			m_renderer->RenderFilledRect(m_rect);
 		if (Drawtype == PolyDrawType::DRAW_OUTLINE_RECT)
-			SDL_RenderDrawRect(m_SDLRenderer, &m_rect);
+			m_renderer->RenderEmptyRect(m_rect);
 
 		if (Drawtype == PolyDrawType::DRAW_LINES) {
-			for (unsigned int i = 0; i < m_linePoints.size(); i++) {
-				SDL_RenderDrawLine(m_SDLRenderer, m_linePoints[i].x, m_linePoints[i].y, m_linePoints[i].z, m_linePoints[i].w);
-			}
+			m_renderer->RenderLines(m_linePoints);
 		}
 	}
 }

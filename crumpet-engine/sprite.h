@@ -1,11 +1,6 @@
 #pragma once
 
-#include <string>
-#include <iostream>
-#include <vector>
 #include <map>
-#include <SDL.h>
-#include <SDL_image.h>
 #include "entity.h"
 
 enum struct SpriteType {
@@ -42,7 +37,7 @@ enum struct SpriteState {
 
 class Sprite : public Entity {
 public:
-	Sprite(std::string name, SpriteType mode);
+	Sprite(std::string name, Renderer* renderer, SpriteType mode);
 	
 	SpriteType Spritetype = SpriteType::SPRITE_DEFAULT;
 	SpriteState Spritestate = SpriteState::STATE_DEFAULT;
@@ -66,7 +61,7 @@ public:
 
 	virtual ~Sprite();
 private:
-	std::map <SpriteState, std::map<int, SDL_Rect*>> m_spriteMaps;
+	std::map <SpriteState, std::map<int, Rect*>> m_spriteMaps;
 	std::map <SpriteState, Vec2*> m_spriteSize;
 
 	SDL_Texture* m_spriteSheetTexture;
