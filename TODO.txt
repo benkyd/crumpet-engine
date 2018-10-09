@@ -1,8 +1,12 @@
 CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
 
+x -> complete
+- -> depreciated / not doing
+? -> in development
+
 [ ] Fix entity / sprite resizing
-[ ] Add sprite methods to entity
-[ ] Remove member initialization lists from Sprite and Entity, use Vec2* instead
+[x] Add sprite methods to entity
+[x] Remove member initialization lists from Sprite and Entity, use Vec2* instead
 [ ] Logger class
     [ ] Maybe use preprocessor statements
     [ ] Time and other useful logging methods
@@ -15,11 +19,11 @@ CURRENT TODO LIST FOR THE DEVELOPMENT OF THE CRUMPET GAME ENGINE
     [x] Setposition and translate methods
     [x] Intersects, contains methods 
     [x] x,y,w,h properties
-    [ ] Switch other classes to use this instead of SDL_Rect* and make sure to update the render pipeline
+    [x] Switch other classes to use this instead of SDL_Rect* and make sure to update the render pipeline
     [x] Center point
         [-] Maybe a point class - used Vec2*
 [ ] Game camera class and redo rendering pipeline
-    [ ] Add rotation and flipping for entities and sprites
+    [?] Add rotation and flipping for entities and sprites
     [x] Camera class
     [ ] Make the camera class control the rendering of the active scene
     [ ] Game coordinate system
