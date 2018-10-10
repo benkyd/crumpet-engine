@@ -20,6 +20,10 @@ public:
 	int GetW();
 	int GetH();
 
+	//TODO: zoom zooms everything, regardless of position or size
+	//it should zoom relative to objects in the active game scene
+	// float Zoom = 1;
+
 	virtual ~Camera();
 private:
 	Rect* m_view;

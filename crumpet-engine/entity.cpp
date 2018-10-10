@@ -6,15 +6,20 @@ Entity::Entity(std::string name, Renderer* renderer)
 	, m_col(new Vec4(0, 0, 0, 255))
 	, m_rect(new Rect(0, 0, 0, 0)) {
 
-	this->m_renderer = renderer;
 	this->m_name = name;
+	this->m_renderer = renderer;
 	this->Rendertype = RenderType::MODE_TEXTURE;
 }
 
-Entity::Entity(std::string name, Renderer* renderer, PolyDrawType drawType) {
+Entity::Entity(std::string name, Renderer* renderer, PolyDrawType drawType)
+	: Pos(new Vec2(0, 0))
+	, Size(new Vec2(0, 0))
+	, m_col(new Vec4(0, 0, 0, 255))
+	, m_rect(new Rect(0, 0, 0, 0)) { 
 
 	this->m_name = name;
 	this->Drawtype = drawType;
+	this->m_renderer = renderer;
 	this->Rendertype = RenderType::MODE_POLYGON;
 }
 
@@ -53,7 +58,7 @@ bool Entity::LoadTexture(SDL_Surface* image) {
 }
 
 void Entity::SetDrawColour(Vec4* col) {
-	m_renderer->SetRendererColour(col);
+	this->m_col = col;
 }
 
 void Entity::SetRect(Rect* rect) {

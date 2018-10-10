@@ -12,13 +12,23 @@ int main(int argc, char** argv) {
 	game.UseCamera("free");
 	Timer timer;
 
+	Entity rect("rect", game.renderer, PolyDrawType::DRAW_FILLED_RECT);
+	rect.SetDrawColour(new Vec4(35, 89, 89, 255));
+	rect.SetRect(new Rect(130, 20, 100, 100));
+
+	Entity lines("lines", game.renderer, PolyDrawType::DRAW_LINES);
+	lines.SetDrawColour(new Vec4(164, 66, 244, 255));
+	lines.AddVecPoint(new Vec4(1, 1, 3323, 5335));
+	lines.AddVecPoint(new Vec4(626, 1, 333, 344));
+	lines.AddVecPoint(new Vec4(1, 23, 645, 5335));
+
 	Sprite sans("sans", game.renderer, SpriteType::SPRITE_ANIMATED);
 	sans.LoadSpriteTextures("/resources/sans-undertale-spritesheet.png");
 	sans.UseSpriteSheet(SpriteState::STATE_FRONT, 30, 9, 230, 300, 10, 4);
 	sans.UseSpriteSheet(SpriteState::STATE_RIGHT, 30, 320, 170, 300, 10, 4);
 	sans.UseSpriteSheet(SpriteState::STATE_LEFT, 40, 640, 170, 300, 10, 4);
 	sans.Pos = &Vec2(100, 100);
-
+	
 	Sprite explosion("explosion", game.renderer ,SpriteType::SPRITE_ANIMATED);
 	explosion.LoadSpriteTextures("/resources/explosion.png");
 	explosion.UseSpriteSheet(SpriteState::STATE_DEFAULT, 1, 260, 64, 63, 0, 16);
@@ -66,6 +76,8 @@ int main(int argc, char** argv) {
 		game.renderer->RenderClear();
 		sans.Render();
 		explosion.Render();
+		rect.Render();
+		lines.Render();
 		game.renderer->RenderUpdate();
 	}
 

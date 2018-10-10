@@ -21,25 +21,30 @@ Renderer::Renderer(std::string title, int width, int height, int targetFramerate
 }
 
 void Renderer::SetRendererColour(Vec4* col) {
-	SDL_SetRenderDrawColor(SDLRenderer, col->x, col->y, col->z, col->w);
+	SDL_SetRenderDrawColor(this->SDLRenderer, col->x, col->y, col->z, col->w);
 }
 
 void Renderer::RenderEmptyRect(Rect* rect) {
-	SDL_RenderDrawRect(SDLRenderer, rect->ToSDLRect());
+	SDL_Rect temp{ rect->GetX() - ActiveCamera->GetX(), rect->GetY() - ActiveCamera->GetY(), rect->GetW(), rect->GetH() };
+	SDL_RenderDrawRect(this->SDLRenderer, &temp);
 }
 
 void Renderer::RenderFilledRect(Rect* rect) {
-	SDL_RenderFillRect(SDLRenderer, rect->ToSDLRect());
+	SDL_Rect temp{ rect->GetX() - ActiveCamera->GetX(), rect->GetY() - ActiveCamera->GetY(), rect->GetW(), rect->GetH() };
+	SDL_RenderFillRect(this->SDLRenderer, &temp);
 }
 
 void Renderer::RenderLines(std::vector<Vec4*> points) {
 	for (unsigned int i = 0; i < points.size(); i++) {
-		SDL_RenderDrawLine(SDLRenderer, points[i]->x, points[i]->y, points[i]->z, points[i]->w);
+		SDL_RenderDrawLine(this->SDLRenderer, points[i]->x - ActiveCamera->GetX(), points[i]->y - ActiveCamera->GetY(), points[i]->z - ActiveCamera->GetX(), points[i]->w - ActiveCamera->GetY());
 	}
 }
 
 void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture) {
-	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect());
+	//Zoom implimentation (BROKEN)
+	// SDL_Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW() * ActiveCamera->Zoom, toRect->GetH() * ActiveCamera->Zoom };
+	SDL_Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW(), toRect->GetH() };
+	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), &toSDLRect);
 }
 
 void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface) {

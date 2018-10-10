@@ -56,8 +56,9 @@ public:
 	void MoveX(int offest);
 	void MoveY(int offest);
 
-	Vec2* Pos;
 	void Render();
+
+	Vec2* Pos;
 
 	virtual ~Sprite();
 private:
