@@ -8,7 +8,8 @@
 int main(int argc, char** argv) {
 	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 0, 1000 / 60); // 1000 / 60);
 	Camera camera(SCREEN_WIDTH, SCREEN_HEIGHT);
-	game.camera = &camera;
+	game.AddCamera("follow", &camera);
+	game.UseCamera("follow");
 	Timer timer;
 
 	Sprite sans("sans", game.renderer, SpriteType::SPRITE_ANIMATED);

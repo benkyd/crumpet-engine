@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 #include <SDL.h>
 #include "renderer.h"
 #include "camera.h"
@@ -10,7 +11,10 @@ public:
 	Game(std::string title, int width, int height, int targetFramerate, int targetUpdaterate);
 
 	Renderer* renderer;
-	Camera* camera;
+	std::map<std::string, Camera*> Cameras;
+
+	void AddCamera(std::string name, Camera* camera);
+	void UseCamera(std::string name);
 
 	void PollEvents();
 

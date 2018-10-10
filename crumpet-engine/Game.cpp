@@ -15,6 +15,14 @@ void Game::PollEvents() {
 			this->renderer->CloseDisplay();
 }
 
+void Game::AddCamera(std::string name, Camera* camera) {
+	Cameras[name] = camera;
+}
+
+void Game::UseCamera(std::string name) {
+	renderer->ApplyCameraToScene(Cameras[name]);
+}
+
 Game::~Game() {
 	
 }

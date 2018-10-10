@@ -1,5 +1,4 @@
 #include "renderer.h"
-#include "entity.h"
 
 Renderer::Renderer(std::string title, int width, int height, int targetFramerate) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -61,6 +60,10 @@ void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface,
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLRenderer, surface);
 	SDL_RenderCopyEx(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect(), angle, center, SDL_FLIP_NONE);
 	SDL_DestroyTexture(texture);
+}
+
+void Renderer::ApplyCameraToScene(Camera* camera) {
+	this->ActiveCamera = camera;
 }
 
 void Renderer::RenderUpdate() {
