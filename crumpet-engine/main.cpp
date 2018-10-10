@@ -8,8 +8,8 @@
 int main(int argc, char** argv) {
 	Game game("Crumpet engine", SCREEN_WIDTH, SCREEN_HEIGHT, 0, 1000 / 60); // 1000 / 60);
 	Camera camera(SCREEN_WIDTH, SCREEN_HEIGHT);
-	game.AddCamera("follow", &camera);
-	game.UseCamera("follow");
+	game.AddCamera("free", &camera);
+	game.UseCamera("free");
 	Timer timer;
 
 	Sprite sans("sans", game.renderer, SpriteType::SPRITE_ANIMATED);
@@ -37,6 +37,23 @@ int main(int argc, char** argv) {
 				sans.Spritestate = SpriteState::STATE_LEFT;
 				sans.Pos->x -= 10;
 			} else sans.Spritestate = SpriteState::STATE_FRONT;
+
+			if (state[SDL_SCANCODE_UP]) {
+				camera.TranslateViewY(-10);
+				std::cout << camera.GetRect().ToString() << std::endl;
+			} 
+			if (state[SDL_SCANCODE_RIGHT]) {
+				camera.TranslateViewX(10);
+				std::cout << camera.GetRect().ToString() << std::endl;
+			}
+			if (state[SDL_SCANCODE_DOWN]) {
+				camera.TranslateViewY(10);
+				std::cout << camera.GetRect().ToString() << std::endl;
+			}
+			if (state[SDL_SCANCODE_LEFT]) {
+				camera.TranslateViewX(-10);
+				std::cout << camera.GetRect().ToString() << std::endl;
+			}
 
 			if (timer.ticks % 5 == 0) {
 				sans.TickAninmation();

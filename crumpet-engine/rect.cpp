@@ -24,9 +24,7 @@ SDL_Rect* Rect::ToSDLRect() {
 }
 
 std::string Rect::ToString() {
-	std::string res = "";
-
-	res += "( ";
+	std::string res = "(";
 	res += std::to_string(x);
 	res += ", ";
 	res += std::to_string(y);

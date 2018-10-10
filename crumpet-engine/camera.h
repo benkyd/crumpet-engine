@@ -14,6 +14,7 @@ public:
 
 	void SetCenter(Vec2* point);
 
+	Rect GetRect();
 	int GetX();
 	int GetY();
 	int GetW();

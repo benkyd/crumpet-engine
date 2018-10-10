@@ -26,6 +26,11 @@ void Camera::SetCenter(Vec2* point) {
 	m_view->y = (point->y - m_view->CenterY());
 }
 
+Rect Camera::GetRect() {
+	Rect rect(m_view->x, m_view->y, m_view->w, m_view->h);
+	return rect;
+}
+
 int Camera::GetX() {
 	return m_view->x;
 }
