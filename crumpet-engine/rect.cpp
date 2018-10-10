@@ -116,6 +116,22 @@ int Rect::Area() {
 	return (w + h);
 }
 
+int Rect::GetX() {
+	return x;
+}
+
+int Rect::GetY() {
+	return y;
+}
+
+int Rect::GetW() {
+	return w;
+}
+
+int Rect::GetH() {
+	return h;
+}
+
 void Rect::SetRect(int x, int y, int w, int h) {
 	this->x = x;
 	this->y = y;

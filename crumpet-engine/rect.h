@@ -50,6 +50,11 @@ public:
 	int Perimiter();
 	int Area();
 
+	int GetX();
+	int GetY();
+	int GetW();
+	int GetH();
+
 	void SetRect(int x, int y, int w, int h);
 	void SetSize(Vec2* size);
 	void SetPos(Vec2* pos);
