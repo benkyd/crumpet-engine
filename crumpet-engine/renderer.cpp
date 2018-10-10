@@ -47,6 +47,7 @@ void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture)
 	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), &toSDLRect);
 }
 
+//TODO: apply camera renderer to these next 3 methiods
 void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface) {
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLRenderer, surface);
 	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect());
