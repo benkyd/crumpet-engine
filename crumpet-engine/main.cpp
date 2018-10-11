@@ -9,11 +9,6 @@ int main(int argc, char** argv) {
 	game.AddCamera("free", &camera);
 	game.UseCamera("free");
 	Timer timer;
-	
-	Sprite explosion("explosion", game.renderer ,SpriteType::SPRITE_ANIMATED);
-	explosion.LoadSpriteTextures("/resources/explosion.png");
-	explosion.UseSpriteSheet(SpriteState::STATE_DEFAULT, 1, 260, 64, 63, 0, 16);
-	explosion.ResizeSpriteStateByFactor(SpriteState::STATE_DEFAULT, 4);
 
 	Sprite woman("woman", game.renderer, SpriteType::SPRITE_ANIMATED);
 	woman.LoadSpriteTextures("/resources/woman-spritesheet.png");
@@ -25,7 +20,6 @@ int main(int argc, char** argv) {
 	woman.ResizeSpriteStateByFactor(SpriteState::STATE_ACCELERATING, 4);
 	woman.UseSpriteSheet(SpriteState::STATE_RUNNING, 0, 321, 77, 105, 3, 10);
 	woman.ResizeSpriteStateByFactor(SpriteState::STATE_RUNNING, 4);
-
 
 	woman.SetSpriteState(SpriteState::STATE_RUNNING);
 
@@ -55,8 +49,6 @@ int main(int argc, char** argv) {
 			}
 
 			if (timer.ticks % 5 == 0) {
-				// explosion.TickAninmation();
-
 				i++;
 				// Slower animation speed for standing than everything else
 				if (woman.Spritestate == SpriteState::STATE_STANDING) {
@@ -77,10 +69,7 @@ int main(int argc, char** argv) {
 		}
 
 		game.renderer->RenderClear();
-
-		// explosion.Render();
 		woman.Render();
-
 		game.renderer->RenderUpdate();
 	}
 
