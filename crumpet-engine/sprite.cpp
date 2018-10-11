@@ -53,6 +53,28 @@ void Sprite::TickAninmation() {
 	if (m_currentFrame > m_spriteMaps[Spritestate].size()) m_currentFrame = 1;
 }
 
+void Sprite::SetSpriteState(SpriteState state) {
+	Spritestate = state;
+}
+
+void Sprite::FlipSprite(SDL_RendererFlip flip) {
+	Flip = flip;
+}
+
+void Sprite::UnflipSprite() {
+	Flip = SDL_FLIP_NONE;
+}
+
+void Sprite::FlipSpriteH() {
+	if (Flip != SDL_FLIP_HORIZONTAL) Flip = SDL_FLIP_NONE;
+	else Flip = SDL_FLIP_HORIZONTAL;
+}
+
+void Sprite::FlipSpriteV() {
+	if (Flip != SDL_FLIP_VERTICAL) Flip = SDL_FLIP_NONE;
+	else Flip = SDL_FLIP_VERTICAL;
+}
+
 // TODO: get this and the next method done correct
 //at the moment the SpriteState(i) will just check for
 //sprites with that state, and if they exist it will
@@ -89,12 +111,20 @@ void Sprite::Move(Vec2* offset) {
 	Pos->y += offset->y;
 }
 
+void Sprite::MoveX(int offset) {
+	Pos->x += offset;
+}
+
+void Sprite::MoveY(int offset) {
+	Pos->y += offset;
+}
+
 void Sprite::Render() {
 	Rect* currentFrameClip = m_spriteMaps[Spritestate][m_currentFrame];
 	Vec2* currentRenderSize = m_spriteSize[Spritestate];
 	Rect currentFrameDest(Pos->x, Pos->y, currentRenderSize->x, currentRenderSize->y);
 
-	m_renderer->RenderTexture(currentFrameClip, &currentFrameDest, m_spriteSheetTexture);
+	m_renderer->RenderTexture(currentFrameClip, &currentFrameDest, m_spriteSheetTexture, 0, &Vec2(0,0), Flip);
 }
 
 Sprite::~Sprite() {

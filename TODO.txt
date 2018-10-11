@@ -8,6 +8,7 @@ x -> complete
 [ ] Memory leak in rendering pipeline
 
 **TODO**
+[ ] Comment the code
 [ ] Fix entity / sprite resizing
 [x] Add sprite methods to entity
 [x] Remove member initialization lists from Sprite and Entity, use Vec2* instead
@@ -34,6 +35,7 @@ x -> complete
     [x] Render to GameWorld coordinates instead of screen coordinates
     [-] Each entity and sprite should store a reference to Camera
     [ ] Fix zoom in the camera
+    [ ] Objects that are off the screen, do not get rendered
 [ ] GameWorld class with coordinate system
     [?] Switch between camera modes on GameWorld
     [ ] Multiple scenes stored as levels

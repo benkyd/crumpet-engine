@@ -11,6 +11,16 @@ enum struct SpriteType {
 
 enum struct SpriteState {
 	STATE_DEFAULT,
+	STATE_WALKING,
+	STATE_ACCELERATING,
+	STATE_RUNNING,
+	STATE_DECELERATING,
+	STATE_STANDING,
+	STATE_TURNING,
+	STATE_TURNING_LEFTTORIGHT,
+	STATE_TURNING_RIGHTTOLEFT,
+	STATE_STANDING_LEFT,
+	STATE_STANDING_RIGHT,
 	STATE_LEFT,
 	STATE_ACCELERATING_LEFT,
 	STATE_RUNNING_LEFT,
@@ -41,11 +51,17 @@ public:
 
 	SpriteType Spritetype = SpriteType::SPRITE_DEFAULT;
 	SpriteState Spritestate = SpriteState::STATE_DEFAULT;
+	SDL_RendererFlip Flip = SDL_FLIP_NONE;
 
 	bool LoadSpriteTextures(std::string path);
 	void UseSpriteSheet(SpriteState state, int startX, int startY, int width, int height, int separation, int frames);
 	void TickAninmation(SpriteState state);
 	void TickAninmation();
+	void SetSpriteState(SpriteState state);
+	void FlipSprite(SDL_RendererFlip flip);
+	void UnflipSprite();
+	void FlipSpriteH();
+	void FlipSpriteV();
 
 	void ResizeSprites(Vec2* newSize);
 	void ResizeSpritesByFactor(float factor);

@@ -1,7 +1,5 @@
 #include "crumpet-engine.h"
 
-#undef main
-
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
@@ -11,42 +9,33 @@ int main(int argc, char** argv) {
 	game.AddCamera("free", &camera);
 	game.UseCamera("free");
 	Timer timer;
-
-	Entity rect("rect", game.renderer, PolyDrawType::DRAW_FILLED_RECT);
-	rect.SetDrawColour(new Vec4(35, 89, 89, 255));
-	rect.SetRect(new Rect(130, 20, 100, 100));
-
-	Entity lines("lines", game.renderer, PolyDrawType::DRAW_LINES);
-	lines.SetDrawColour(new Vec4(164, 66, 244, 255));
-	lines.AddVecPoint(new Vec4(1, 1, 3323, 5335));
-	lines.AddVecPoint(new Vec4(626, 1, 333, 344));
-	lines.AddVecPoint(new Vec4(1, 23, 645, 5335));
-
-	Sprite sans("sans", game.renderer, SpriteType::SPRITE_ANIMATED);
-	sans.LoadSpriteTextures("/resources/sans-undertale-spritesheet.png");
-	sans.UseSpriteSheet(SpriteState::STATE_FRONT, 30, 9, 230, 300, 10, 4);
-	sans.UseSpriteSheet(SpriteState::STATE_RIGHT, 30, 320, 170, 300, 10, 4);
-	sans.UseSpriteSheet(SpriteState::STATE_LEFT, 40, 640, 170, 300, 10, 4);
-	sans.Pos = &Vec2(100, 100);
 	
 	Sprite explosion("explosion", game.renderer ,SpriteType::SPRITE_ANIMATED);
 	explosion.LoadSpriteTextures("/resources/explosion.png");
 	explosion.UseSpriteSheet(SpriteState::STATE_DEFAULT, 1, 260, 64, 63, 0, 16);
 	explosion.ResizeSpriteStateByFactor(SpriteState::STATE_DEFAULT, 4);
 
+	Sprite woman("woman", game.renderer, SpriteType::SPRITE_ANIMATED);
+	woman.LoadSpriteTextures("/resources/woman-spritesheet.png");
+	woman.UseSpriteSheet(SpriteState::STATE_DEFAULT, 15, 1, 45, 105, 35, 14);
+	woman.ResizeSpriteStateByFactor(SpriteState::STATE_DEFAULT, 4);
+	woman.UseSpriteSheet(SpriteState::STATE_STANDING, 19, 109, 45, 105, 35, 2);
+	woman.ResizeSpriteStateByFactor(SpriteState::STATE_STANDING, 4);
+	woman.UseSpriteSheet(SpriteState::STATE_ACCELERATING, 19, 214, 74, 105, 1, 5);
+	woman.ResizeSpriteStateByFactor(SpriteState::STATE_ACCELERATING, 4);
+	woman.UseSpriteSheet(SpriteState::STATE_RUNNING, 0, 321, 77, 105, 3, 10);
+	woman.ResizeSpriteStateByFactor(SpriteState::STATE_RUNNING, 4);
+
+
+	woman.SetSpriteState(SpriteState::STATE_RUNNING);
+
+	int i = 0;
+	int runningDirection = 0; // 0 = standing, 1 = right, 2 = left
 	while (!game.renderer->IsDisplayClosed()) {
 		game.PollEvents();
 
 		if (timer.GetTimeElapsed() >= game.TargetMsPerUpdate) { // Constant update rate, despite framerate
-
 			const Uint8 *state = SDL_GetKeyboardState(NULL);
-			if (state[SDL_SCANCODE_D]) {
-				sans.Spritestate = SpriteState::STATE_RIGHT;
-				sans.Pos->x += 10;
-			} else if (state[SDL_SCANCODE_A]) {
-				sans.Spritestate = SpriteState::STATE_LEFT;
-				sans.Pos->x -= 10;
-			} else sans.Spritestate = SpriteState::STATE_FRONT;
 
 			if (state[SDL_SCANCODE_UP]) {
 				camera.TranslateViewY(-10);
@@ -66,18 +55,32 @@ int main(int argc, char** argv) {
 			}
 
 			if (timer.ticks % 5 == 0) {
-				sans.TickAninmation();
-				explosion.TickAninmation();
+				// explosion.TickAninmation();
+
+				i++;
+				// Slower animation speed for standing than everything else
+				if (woman.Spritestate == SpriteState::STATE_STANDING) {
+					if (timer.ticks % 60 == 0) {
+						woman.TickAninmation();
+					}
+				} else {
+					woman.TickAninmation(); 
+				}
+				// After inital loading sprite, switches to silouette
+				if (i > 14 && woman.Spritestate == SpriteState::STATE_DEFAULT) {
+					woman.SetSpriteState(SpriteState::STATE_STANDING);
+					i = 0;
+				}
 			}
 
 			timer.Tick();
 		}
 
 		game.renderer->RenderClear();
-		sans.Render();
-		explosion.Render();
-		rect.Render();
-		lines.Render();
+
+		// explosion.Render();
+		woman.Render();
+
 		game.renderer->RenderUpdate();
 	}
 

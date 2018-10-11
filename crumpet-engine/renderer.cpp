@@ -25,13 +25,15 @@ void Renderer::SetRendererColour(Vec4* col) {
 }
 
 void Renderer::RenderEmptyRect(Rect* rect) {
-	SDL_Rect temp{ rect->GetX() - ActiveCamera->GetX(), rect->GetY() - ActiveCamera->GetY(), rect->GetW(), rect->GetH() };
-	SDL_RenderDrawRect(this->SDLRenderer, &temp);
+	Rect temp{ rect->GetX() - ActiveCamera->GetX(), rect->GetY() - ActiveCamera->GetY(), rect->GetW(), rect->GetH() };
+	SDL_RenderDrawRect(this->SDLRenderer, temp.ToSDLRect());
+	temp.~Rect();
 }
 
 void Renderer::RenderFilledRect(Rect* rect) {
-	SDL_Rect temp{ rect->GetX() - ActiveCamera->GetX(), rect->GetY() - ActiveCamera->GetY(), rect->GetW(), rect->GetH() };
-	SDL_RenderFillRect(this->SDLRenderer, &temp);
+	Rect temp{ rect->GetX() - ActiveCamera->GetX(), rect->GetY() - ActiveCamera->GetY(), rect->GetW(), rect->GetH() };
+	SDL_RenderFillRect(this->SDLRenderer, temp.ToSDLRect());
+	temp.~Rect();
 }
 
 void Renderer::RenderLines(std::vector<Vec4*> points) {
@@ -41,31 +43,40 @@ void Renderer::RenderLines(std::vector<Vec4*> points) {
 }
 
 void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture) {
-	//Zoom implimentation (BROKEN)
-	// SDL_Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW() * ActiveCamera->Zoom, toRect->GetH() * ActiveCamera->Zoom };
-	SDL_Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW(), toRect->GetH() };
-	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), &toSDLRect);
+	// Zoom implimentation (BROKEN)
+	//SDL_Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW() * ActiveCamera->Zoom, toRect->GetH() * ActiveCamera->Zoom };
+	Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW(), toRect->GetH() };
+	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toSDLRect.ToSDLRect());
+	toSDLRect.~Rect();
 }
 
-//TODO: apply camera renderer to these next 3 methiods
+// TODO: apply camera renderer to these next 3 methiods
 void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface) {
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLRenderer, surface);
-	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect());
+	Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW(), toRect->GetH() };
+	SDL_RenderCopy(SDLRenderer, texture, fromRect->ToSDLRect(), toSDLRect.ToSDLRect());
 	SDL_DestroyTexture(texture);
+	toSDLRect.~Rect();
 }
 
-void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture, const double angle, Vec2* rotationCenter) {
+void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Texture* texture, const double angle, Vec2* rotationCenter, SDL_RendererFlip flip = SDL_FLIP_NONE) {
 	SDL_Point temp = { rotationCenter->x, rotationCenter->y };
 	SDL_Point* center = new SDL_Point(temp);
-	SDL_RenderCopyEx(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect(), angle, center, SDL_FLIP_NONE);
+	Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW(), toRect->GetH() };
+	SDL_RenderCopyEx(SDLRenderer, texture, fromRect->ToSDLRect(), toSDLRect.ToSDLRect(), angle, center, flip);
+	delete center;
+	toSDLRect.~Rect();
 }
 
-void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface, const double angle, Vec2* rotationCenter) {
+void Renderer::RenderTexture(Rect* fromRect, Rect* toRect, SDL_Surface* surface, const double angle, Vec2* rotationCenter, SDL_RendererFlip flip = SDL_FLIP_NONE) {
 	SDL_Point temp = { rotationCenter->x, rotationCenter->y };
 	SDL_Point* center = new SDL_Point(temp);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLRenderer, surface);
-	SDL_RenderCopyEx(SDLRenderer, texture, fromRect->ToSDLRect(), toRect->ToSDLRect(), angle, center, SDL_FLIP_NONE);
+	Rect toSDLRect{ toRect->GetX() - ActiveCamera->GetX(), toRect->GetY() - ActiveCamera->GetY(), toRect->GetW(), toRect->GetH() };
+	SDL_RenderCopyEx(SDLRenderer, texture, toSDLRect.ToSDLRect(), toRect->ToSDLRect(), angle, center, flip);
 	SDL_DestroyTexture(texture);
+	delete center;
+	toSDLRect.~Rect();
 }
 
 void Renderer::ApplyCameraToScene(Camera* camera) {
