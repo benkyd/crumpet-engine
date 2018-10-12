@@ -5,6 +5,12 @@ Sprite::Sprite(std::string name, Renderer* renderer, SpriteType mode)
 	, Pos(new Vec2(0, 0)) {
 
 	this->Spritetype = mode;
+
+	int length = (int)SpriteState::NUM_ITEMS;
+	for (unsigned int i = 0; i < length; i++) {
+		m_spriteMaps[SpriteState(i)][0] = new Rect(0, 0, 0, 0);
+		m_spriteSize[SpriteState(i)] = new Vec2(0, 0);
+	}
 }
 
 bool Sprite::LoadSpriteTextures(std::string path) {

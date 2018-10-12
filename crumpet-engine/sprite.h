@@ -42,7 +42,8 @@ enum struct SpriteState {
 	STATE_MISC2,
 	STATE_MISC3,
 	STATE_MISC4,
-	STATE_MISC5
+	STATE_MISC5,
+	NUM_ITEMS
 };
 
 class Sprite : public Entity {

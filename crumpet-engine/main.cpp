@@ -20,10 +20,14 @@ int main(int argc, char** argv) {
 	woman.ResizeSpriteStateByFactor(SpriteState::STATE_ACCELERATING, 4);
 	woman.UseSpriteSheet(SpriteState::STATE_RUNNING, 0, 321, 77, 105, 3, 10);
 	woman.ResizeSpriteStateByFactor(SpriteState::STATE_RUNNING, 4);
-
-	woman.SetSpriteState(SpriteState::STATE_RUNNING);
+	woman.UseSpriteSheet(SpriteState::STATE_TURNING, 3, 430, 76, 103, 3, 4);
+	woman.ResizeSpriteStateByFactor(SpriteState::STATE_TURNING, 4);
+	woman.UseSpriteSheet(SpriteState::STATE_DECELERATING, 12, 534, 60, 105, 27, 2);
+	woman.ResizeSpriteStateByFactor(SpriteState::STATE_DECELERATING, 4);
 
 	int i = 0;
+	int j = 0;
+	SpriteState lastState = SpriteState::STATE_DEFAULT;
 	int runningDirection = 0; // 0 = standing, 1 = right, 2 = left
 	while (!game.renderer->IsDisplayClosed()) {
 		game.PollEvents();
@@ -48,7 +52,7 @@ int main(int argc, char** argv) {
 				std::cout << camera.GetRect().ToString() << std::endl;
 			}
 
-			if (timer.ticks % 5 == 0) {
+			if (timer.ticks % 10 == 0) {
 				i++;
 				// Slower animation speed for standing than everything else
 				if (woman.Spritestate == SpriteState::STATE_STANDING) {
@@ -58,8 +62,29 @@ int main(int argc, char** argv) {
 				} else {
 					woman.TickAninmation(); 
 				}
+
+				if (state[SDL_SCANCODE_D]) {
+					woman.SetSpriteState(SpriteState::STATE_ACCELERATING);
+					j++;
+					if (woman.Spritestate == SpriteState::STATE_DECELERATING) {
+						woman.SetSpriteState(SpriteState::STATE_RUNNING);
+					}
+					if (j > 3) {
+						woman.SetSpriteState(SpriteState::STATE_RUNNING);
+					}
+				} 
+
+				if (!state[SDL_SCANCODE_D]) {
+					if (j > 0 && woman.Spritestate == SpriteState::STATE_DECELERATING) {
+						j--;
+						woman.SetSpriteState(SpriteState::STATE_DECELERATING);
+					} else {
+						woman.SetSpriteState(SpriteState::STATE_STANDING);
+					}
+				}
+
 				// After inital loading sprite, switches to silouette
-				if (i > 14 && woman.Spritestate == SpriteState::STATE_DEFAULT) {
+				if (i > 14 && lastState == SpriteState::STATE_DEFAULT) {
 					woman.SetSpriteState(SpriteState::STATE_STANDING);
 					i = 0;
 				}
