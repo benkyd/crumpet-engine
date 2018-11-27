@@ -2,7 +2,7 @@
 
 class XD {
 public:
-	void write(char* i) {
+	static void write(char* i) {
 		std::cout << i << std::endl;
 	}
 };

@@ -111,44 +111,47 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ./bin/crumpet-engine.o
+# Target rules for targets named ./bin/crumpet-engine
 
 # Build rule for target.
-./bin/crumpet-engine.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ./bin/crumpet-engine.o
-.PHONY : ./bin/crumpet-engine.o
+./bin/crumpet-engine: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ./bin/crumpet-engine
+.PHONY : ./bin/crumpet-engine
 
 # fast build rule for target.
-./bin/crumpet-engine.o/fast:
-	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.o.dir/build.make CMakeFiles/./bin/crumpet-engine.o.dir/build
-.PHONY : ./bin/crumpet-engine.o/fast
-
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
+./bin/crumpet-engine/fast:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/build
+.PHONY : ./bin/crumpet-engine/fast
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.o.dir/build.make CMakeFiles/./bin/crumpet-engine.o.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-
-.PHONY : src/main.i
+src/header.o:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/src/header.o
+.PHONY : src/header.o
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.o.dir/build.make CMakeFiles/./bin/crumpet-engine.o.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-
-.PHONY : src/main.s
+src/header.i:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/src/header.i
+.PHONY : src/header.i
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.o.dir/build.make CMakeFiles/./bin/crumpet-engine.o.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/header.s:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/src/header.s
+.PHONY : src/header.s
+
+# target to build an object file
+src/main.o:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/src/main.o
+.PHONY : src/main.o
+
+# target to preprocess a source file
+src/main.i:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/src/main.i
+.PHONY : src/main.i
+
+# target to generate assembly for a file
+src/main.s:
+	$(MAKE) -f CMakeFiles/./bin/crumpet-engine.dir/build.make CMakeFiles/./bin/crumpet-engine.dir/src/main.s
+.PHONY : src/main.s
 
 # Help Target
 help:
@@ -157,8 +160,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... ./bin/crumpet-engine.o"
+	@echo "... ./bin/crumpet-engine"
 	@echo "... edit_cache"
+	@echo "... src/header.o"
+	@echo "... src/header.i"
+	@echo "... src/header.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
