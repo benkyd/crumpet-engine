@@ -1,6 +1,6 @@
 #include "input.h"
 
-Input::Input(Renderer *renderer) {
+Input::Input(Renderer* renderer) {
     m_renderer = renderer;
 }
 

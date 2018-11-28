@@ -16,9 +16,10 @@ public:
     bool isWindowClosed();
     void destroyWindow();
 
-    SDL_Renderer* SDLRenderer;
-
+    void clear();
     void update();
+
+    SDL_Renderer* SDLRenderer;
 
     virtual ~Renderer();
 private:

@@ -18,6 +18,7 @@ void Renderer::createWindow(std::string title, int width, int height, ScreenMode
 	if (mode == SCREEN_MODE_VSYNC)
 		SDLRenderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 
+	SDL_SetRenderDrawColor(SDLRenderer, 66, 134, 244, 255);
 	m_isWindowClosed = false;
 }
 
@@ -29,7 +30,16 @@ void Renderer::destroyWindow() {
     m_isWindowClosed = true;
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
-    std::cout << "SDL unititialized" << std::endl;
+    std::cout << "SDL uninitialized" << std::endl;
+}
+
+void Renderer::clear() {
+	SDL_RenderClear(SDLRenderer);
+}
+
+void Renderer::update() {
+	SDL_SetRenderDrawColor(SDLRenderer, 66, 134, 244, 0);
+	SDL_RenderPresent(SDLRenderer);
 }
 
 Renderer::~Renderer() {
