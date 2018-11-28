@@ -1,5 +1,10 @@
-CMakeFiles/
+# CMakeFiles/
 CMakeCache.txt
 build/
+Win32/
 cmake_install.cmake
 Makefile
+crumpet-engine.sln
+CMakeFiles/
+*.vcxproj
+*.vcxproj.filters

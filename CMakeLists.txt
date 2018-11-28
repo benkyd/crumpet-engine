@@ -8,10 +8,25 @@ set(SrcDIR src)
 set(EngineDIR ${SrcDIR}/crumpet-engine)
 set(IncludeDIR include)
 
-find_package(SDL2 REQUIRED)
+if (WIN32)
+    set(SDL2_PATH E:/Games/Librarys/SDL2-2.0.8)
+    set(SDL2_INCLUDE_DIR E:/Games/Librarys/SDL2-2.0.8/include)
+    set(SDL2_LIBRARY E:/Games/Librarys/SDL2-2.0.8/lib/x64)
+    set(SDL2_IMAGE_INCLUDE_DIR E:/Games/Librarys/SDL2_image-2.0.4/VisualC/external/include)
+    set(SDL2_IMAGE_LIBRARIES  E:/Games/Librarys/SDL2_image-2.0.4/VisualC/external/lib/x64)
+endif (WIN32)
 
-include_directories(${BuildDIR}/ ${SDL_INCLUDE_DIR})
-include_directories(${BuildDIR}/ ${IncludeDIR})
+if (UNIX)
+    find_package(SDL2 REQUIRED)
+    find_package(SDL2_image REQUIRED)
+endif (UNIX)
+
+include_directories(
+    ${SDL2_INCLUDE_DIR}
+    ${SDL2_IMAGE_INCLUDE_DIR}
+)
+
+include_directories(${IncludeDIR})
 
 file(GLOB_RECURSE SourceFiles 
     ${SrcDIR}/*
@@ -21,4 +36,7 @@ file(GLOB_RECURSE SourceFiles
 )
 
 add_executable(${BuildDIR}/${EXEName} ${SourceFiles})
-target_link_libraries(${BuildDIR}/${EXEName} ${SDL2_LIBRARIES})
+target_link_libraries(${BuildDIR}/${EXEName}
+    ${SDL2_LIBRARY}
+    ${SDL2_IMAGE_LIBRARIES}
+)
