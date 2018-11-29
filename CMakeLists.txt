@@ -1,6 +1,9 @@
 # version
-cmake_minimum_required(VERSION 2.4)
+cmake_minimum_required(VERSION 3.8)
 project(crumpet-engine)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CMakeFiles/)
+cmake_policy(SET CMP0037 OLD)
 
 set(EXEName crumpet-engine)
 set(BuildDIR bin)
@@ -13,7 +16,7 @@ if (WIN32)
     set(SDL2_INCLUDE_DIR E:/Games/Librarys/SDL2-2.0.8/include)
     set(SDL2_LIBRARY E:/Games/Librarys/SDL2-2.0.8/lib/x64)
     set(SDL2_IMAGE_INCLUDE_DIR E:/Games/Librarys/SDL2_image-2.0.4/VisualC/external/include)
-    set(SDL2_IMAGE_LIBRARIES  E:/Games/Librarys/SDL2_image-2.0.4/VisualC/external/lib/x64)
+    set(SDL2_IMAGE_LIBRARY  E:/Games/Librarys/SDL2_image-2.0.4/VisualC/external/lib/x64)
 endif (WIN32)
 
 if (UNIX)
@@ -21,12 +24,9 @@ if (UNIX)
     find_package(SDL2_image REQUIRED)
 endif (UNIX)
 
-include_directories(
-    ${SDL2_INCLUDE_DIR}
-    ${SDL2_IMAGE_INCLUDE_DIR}
-)
-
-include_directories(${IncludeDIR})
+include_directories(${BuildDIR}/ ${SDL2_INCLUDE_DIR})
+include_directories(${BuildDIR}/ ${SDL2_IMAGE_INCLUDE_DIR})
+include_directories(${BuildDIR}/ ${IncludeDIR})
 
 file(GLOB_RECURSE SourceFiles 
     ${SrcDIR}/*
@@ -36,7 +36,5 @@ file(GLOB_RECURSE SourceFiles
 )
 
 add_executable(${BuildDIR}/${EXEName} ${SourceFiles})
-target_link_libraries(${BuildDIR}/${EXEName}
-    ${SDL2_LIBRARY}
-    ${SDL2_IMAGE_LIBRARIES}
-)
+target_link_libraries(${BuildDIR}/${EXEName} ${SDL2_LIBRARIES})
+target_link_libraries(${BuildDIR}/${EXEName} ${SDL2_IMAGE_LIBRARY})

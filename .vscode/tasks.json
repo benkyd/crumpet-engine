@@ -1,0 +1,32 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Cmake and build",
+            "type": "shell",
+            "command": "cmake .; make"
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make"
+        },
+        {
+            "label": "build and run",
+            "type": "shell",
+            "command": "make; cd bin; ./crumpet-engine; cd .."
+        },
+        {
+            "label": "Cmake, build and run",
+            "type": "shell",
+            "command": "cmake .; make; cd bin; ./crumpet-engine; cd .."
+        }, 
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "cd bin; ./crumpet-engine; cd .."
+        }
+    ]
+}

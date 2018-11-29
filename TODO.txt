@@ -5,41 +5,7 @@ x -> complete
 ? -> in development
 
 ***URGENT FIX NEEDED***
-[ ] Memory leak in rendering pipeline
+[ ] 
 
 **TODO**
 [ ] Comment the code
-[ ] Fix entity / sprite resizing
-[x] Add sprite methods to entity
-[x] Remove member initialization lists from Sprite and Entity, use Vec2* instead
-[ ] Logger class
-    [ ] Maybe use preprocessor statements
-    [ ] Time and other useful logging methods
-    [ ] Empty constructor, instance method
-[x] Rect class to extend SDL_Rect and add conversion capabilitys, colision and intersection to it
-    [x] Camera class to use Rect* instead of SLD_Rect*
-    [x] Add and subtract (+ -) operators to add rectangles and subtract them together
-    [x] Equal and not equal (!= ==) operators to return true / flase if the rectangles match
-    [x] ToString function for easy logging
-    [x] Setposition and translate methods
-    [x] Intersects, contains methods 
-    [x] x,y,w,h properties
-    [x] Switch other classes to use this instead of SDL_Rect* and make sure to update the render pipeline
-    [x] Center point
-        [-] Maybe a point class - used Vec2*
-[x] Game camera class and redo rendering pipeline
-    [?] Add rotation and flipping for entities and sprites
-    [x] Camera class
-    [x] Make the camera class control the rendering of the active scene
-    [x] Game coordinate system
-    [x] Render to GameWorld coordinates instead of screen coordinates
-    [-] Each entity and sprite should store a reference to Camera
-    [ ] Fix zoom in the camera
-    [ ] Objects that are off the screen, do not get rendered
-[ ] GameWorld class with coordinate system
-    [?] Switch between camera modes on GameWorld
-    [ ] Multiple scenes stored as levels
-    [ ] UI and HUD (maybe later tho)
-[ ] Framerate
-    [ ] Cap framerate
-    [ ] Calculate framerate
