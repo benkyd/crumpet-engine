@@ -18,7 +18,6 @@ public:
     Renderer renderer;
     Input input;
 
-    // Input instance
     // Entity list <- Renderer renders from this
     // Camera list and switching and adding
 
