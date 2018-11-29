@@ -33,6 +33,7 @@ file(GLOB_RECURSE SourceFiles
     ${EngineDIR}/*
     ${EngineDIR}/renderengine/*
     ${EngineDIR}/input/*
+    ${EngineDIR}/resourcemanager/*
 )
 
 add_executable(${BuildDIR}/${EXEName} ${SourceFiles})

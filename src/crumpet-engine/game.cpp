@@ -1,7 +1,9 @@
 #include "game.h"
 
 Game::Game()
-    : input(&renderer) {
+    : input(&renderer) 
+    , resourceManager(&renderer) 
+    , textureManager(resourceManager.textureManager) {
 
 }
 
