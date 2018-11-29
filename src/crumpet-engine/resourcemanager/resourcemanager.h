@@ -8,5 +8,5 @@ public:
 
     TextureManager textureManager;
 
-    virtual ~ResourceManger();
+    virtual ~ResourceManger() {};
 };

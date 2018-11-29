@@ -1,15 +1,13 @@
 #pragma once
 
 #include <string>
-#include <iostream>
 #include <map>
-#include <vector>
 
 #include "entity.h"
 
 class EntityManager {
 public:
-    EntityManager():
+    EntityManager();
 
     virtual ~EntityManager();
 private:
