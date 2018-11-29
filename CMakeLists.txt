@@ -31,9 +31,10 @@ include_directories(${BuildDIR}/ ${IncludeDIR})
 file(GLOB_RECURSE SourceFiles 
     ${SrcDIR}/*
     ${EngineDIR}/*
-    ${EngineDIR}/renderengine/*
     ${EngineDIR}/input/*
+    ${EngineDIR}/renderengine/*
     ${EngineDIR}/resourcemanager/*
+    ${EngineDIR}/entitymanager/*
 )
 
 add_executable(${BuildDIR}/${EXEName} ${SourceFiles})
