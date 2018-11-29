@@ -8,5 +8,6 @@ crumpet-engine.sln
 CMakeFiles/bin
 CMakeFiles/CMakeTmp
 CMakeFiles/3.12.3
+CMakeFiles/3.7.2
 *.vcxproj
 *.vcxproj.filters
