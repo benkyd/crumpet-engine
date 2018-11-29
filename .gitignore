@@ -5,6 +5,8 @@ Win32/
 cmake_install.cmake
 Makefile
 crumpet-engine.sln
-CMakeFiles/
+CMakeFiles/bin
+CMakeFiles/CMakeTmp
+CMakeFiles/3.12.3
 *.vcxproj
 *.vcxproj.filters
