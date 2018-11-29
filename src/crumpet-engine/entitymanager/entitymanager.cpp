@@ -1,6 +1,7 @@
 #include "entitymanager.h"
 
-EntityManager::EntityManager() {
+EntityManager::EntityManager(ResourceManger* resourceManger)
+    : resourceManger(resourceManger) {
 
 }
 

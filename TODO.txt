@@ -8,4 +8,9 @@ x -> complete
 [ ] 
 
 **TODO**
-[ ] Comment the code
+[-] Comment the code
+[ ] Entity system
+    [ ] Entity manager
+        [ ] Ability to make entities and manage textures between them
+    [ ] Entity base class
+    [ ] Entity class

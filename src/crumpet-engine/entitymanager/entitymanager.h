@@ -4,12 +4,16 @@
 #include <map>
 
 #include "entity.h"
+#include "../resourcemanager/resourcemanager.h"
 
 class EntityManager {
 public:
-    EntityManager();
+    EntityManager(ResourceManger* resourceManager);
+
+    
 
     virtual ~EntityManager();
 private:
-    std::map<std::string, Entity> m_activeEntities;
+    std::map<unsigned short int, Entity> m_activeEntities;
+    ResourceManger* resourceManger;
 };
