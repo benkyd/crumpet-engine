@@ -3,7 +3,8 @@
 Game::Game()
     : input(&renderer) 
     , resourceManager(&renderer) 
-    , textureManager(resourceManager.textureManager) {
+    , textureManager(resourceManager.textureManager) 
+    , entityManager() {
 
 }
 

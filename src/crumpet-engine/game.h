@@ -7,6 +7,7 @@
 
 #include "renderengine/renderer.h"
 #include "resourcemanager/resourcemanager.h"
+#include "entitymanager/entitymanager.h"
 #include "input/input.h"
 
 class Game {
@@ -15,6 +16,7 @@ public:
 
     ResourceManger resourceManager;
     TextureManager textureManager;
+    EntityManager entityManager;
     Renderer renderer;
     Input input;
 

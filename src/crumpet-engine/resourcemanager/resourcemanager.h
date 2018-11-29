@@ -7,4 +7,6 @@ public:
     ResourceManger(Renderer* renderer) : textureManager(renderer) {};
 
     TextureManager textureManager;
+
+    virtual ~ResourceManger();
 };
