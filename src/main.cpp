@@ -1,4 +1,5 @@
 #include "crumpet-engine/crumpet-engine.h"
+#include "crumpet-engine/rect.h"
 
 int main(int argc, char** argv) {
 	Game game;

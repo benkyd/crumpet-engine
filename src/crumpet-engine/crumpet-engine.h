@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game.h"
-#include "rect.h"
+#include <math.h>
+#include <logger.h>
 
 #undef main
