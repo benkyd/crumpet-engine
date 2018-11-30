@@ -42,6 +42,12 @@ public:
         return output.str();
     }
 
+    static void resetColour() {
+        std::cout
+            << "\033[" << CONSOLE_COLOUR_BG_DEFAULT << "m";
+            << "\033[" << CONSOLE_COLOUR_FG_DEFAULT << "m";
+    }
+
     static void foregroundColour(ConsoleForegroundColour colour) {
         std::cout << "\033[" << colour << "m";
     }

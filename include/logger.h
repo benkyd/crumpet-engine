@@ -18,6 +18,13 @@ public:
     }
 
     template<class T>
+    static void info(T obj) {
+        std::cout
+            << getTime() << " [" << Colour::getColouredText(CONSOLE_COLOUR_FG_LIGHT_BLUE, "DEBUG")
+            << "] " << obj << std::endl;
+    }
+
+    template<class T>
     static void warn(T obj) {
         std::cout
             << getTime() << " [" << Colour::getColouredText(CONSOLE_COLOUR_FG_LIGHT_YELLOW, "WARN")
