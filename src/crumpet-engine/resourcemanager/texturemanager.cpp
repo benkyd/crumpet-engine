@@ -8,18 +8,22 @@ bool TextureManager::registerTexture(std::string textureSource, std::string text
     SDL_Texture* texture;
 	SDL_Surface* loadSurface = IMG_Load(textureSource.c_str());
 	if (loadSurface == NULL) {
-		std::cout << "ERROR LOADING SURFACE " << SDL_GetError() << std::endl;
+		Logger::error("ERROR LOADING SURFACE");
+        Logger::panic(SDL_GetError());
         return false;
 	}
 	texture = SDL_CreateTextureFromSurface(m_renderer->SDLRenderer, loadSurface);
 	if (texture == NULL) {
-		std::cout << "ERROR LOADING TEXTURE " << SDL_GetError() << std::endl;
+		Logger::error("ERROR LOADING TEXTURE");
+        Logger::panic(SDL_GetError());
         return false;
     }
 	SDL_FreeSurface(loadSurface);
 
     m_textureSources[textureName] = textureSource;
     m_registerdTextures[textureName] = texture;
+
+    Logger::info("Loaded texture " + textureSource + " as " + textureName);
 
     return true;
 }

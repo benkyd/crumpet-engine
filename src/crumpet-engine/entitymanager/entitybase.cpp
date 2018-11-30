@@ -1,6 +1,7 @@
 #include "entitybase.h"
 
-EntityBase::EntityBase() {
+EntityBase::EntityBase()
+    : textureDimensions(0, 0) {
 
 }
 
