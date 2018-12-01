@@ -9,6 +9,7 @@ x -> complete
 
 **TODO**
 [-] Comment the code
+[ ] Overload operators in the logger and support for streams
 [ ] Entity system
     [ ] Entity manager
         [ ] Ability to make entities and manage textures between them
