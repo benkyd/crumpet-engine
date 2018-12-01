@@ -10,17 +10,27 @@ public:
         std::cout << getTime() << " " << obj << std::endl;
     }
 
-    template<class T>
-    static void info(T obj) {
-        std::cout
-            << getTime() << " [" << Colour::getColouredText(CONSOLE_COLOUR_FG_GREEN, "INFO")
-            << "] " << obj << std::endl;
-    }
+    class Log {
+    public:
+        Log();
+
+        template<class T>
+        Log* operator<<(T obj) {
+            m_stream << obj;
+            return this;
+        }
+        ~Log() {
+            std::string output = m_stream.str();
+            Logger::log(output);
+        }
+    private:
+        std::stringstream m_stream;
+    };
 
     template<class T>
     static void info(T obj) {
         std::cout
-            << getTime() << " [" << Colour::getColouredText(CONSOLE_COLOUR_FG_LIGHT_BLUE, "DEBUG")
+            << getTime() << " [" << Colour::getColouredText(CONSOLE_COLOUR_FG_GREEN, "INFO")
             << "] " << obj << std::endl;
     }
 
