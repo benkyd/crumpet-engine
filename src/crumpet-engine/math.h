@@ -19,7 +19,7 @@ struct Vec4 {
 	template<class P>
 	Vec4(P all) : x(all), y(all), z(all), w(all) {}
 	Vec4() : x(0), y(0), z(0), w(0) {}
-	inline Vec4& dot(const Vec3<T>& v) {
+	inline Vec4& dot(const Vec4<T>& v) {
 		return (x * v.x + y * v.y + z * v.z + w * v.w);
 	}
 	inline const Vec4& operator+() {
