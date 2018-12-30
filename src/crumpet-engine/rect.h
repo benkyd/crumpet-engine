@@ -35,11 +35,11 @@ public:
 	// bool Intersects(int x, int y, int w, int h);
 
 	bool Contains(Rect* rect);
-	bool Contains(Vec2* point);
+	bool Contains(Vec2<int>* point);
 	bool Contains(int x, int y, int w, int h);
 
-	Vec2* Position();
-	Vec2* Center();
+	Vec2<int>* Position();
+	Vec2<int>* Center();
 	int CenterX();
 	int CenterY();
 
@@ -47,7 +47,7 @@ public:
 	int Right();
 	int Top();
 	int Bottom();
-	int Perimiter();
+	int Perimiter();	
 	int Area();
 
 	int GetX();
@@ -56,9 +56,9 @@ public:
 	int GetH();
 
 	void SetRect(int x, int y, int w, int h);
-	void SetSize(Vec2* size);
-	void SetPos(Vec2* pos);
-	void Translate(Vec2* offset);
+	void SetSize(Vec2<int>* size);
+	void SetPos(Vec2<int>* pos);
+	void Translate(Vec2<int>* offset);
 	void TranslateX(int x);
 	void TranslateY(int y);
 

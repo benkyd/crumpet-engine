@@ -11,32 +11,210 @@ inline float ToDegree(const float Radian) {
 	return (Radian * RAD2DEG);
 }
 
+template<class T>
 struct Vec4 {
-	int x, y, z, w;
-	Vec4(int x, int y, int z, int w) : x(x), y(y), z(z), w(w) {}
+	T x, y, z, w;
+	template<class P>
+	Vec4(P x, P y, P z, P w) : x(x), y(y), z(z), w(w) {}
+	template<class P>
+	Vec4(P all) : x(all), y(all), z(all), w(all) {}
+	Vec4() : x(0), y(0), z(0), w(0) {}
+	inline Vec4& dot(const Vec3<T>& v) {
+		return (x * v.x + y * v.y + z * v.z + w * v.w);
+	}
+	inline const Vec4& operator+() {
+		return *this;
+	}
+	inline Vec4& operator-() {
+		return Vec4<T>(-x, -y, -z, -w);
+	}
+	inline Vec4& operator+(const Vec4<T>& v) {
+		return new Vec4(x + v.x, y + v.y, z + v.z, w + v.w);
+	}
+	inline Vec4& operator-(const Vec4<T>& v) {
+		return new Vec4(x - v.x, y - v.y, z - v.z, w - v.w);
+	}	
+	inline Vec4& operator*(const Vec4<T>& v) {
+		return new Vec4(x * v.x, y * v.y, z * v.z, w * v.w);
+	}
+	inline Vec4& operator/(const Vec4<T>& v) {
+		return new Vec4(x / v.x, y / v.y, z / v.z, w / v.w);
+	}
+	inline Vec4& operator+=(const Vec4<T>& v) {
+		x+=v.x; y+=v.y; z+=v.z; w+=v.w;
+		return *this;
+	}
+	inline Vec4& operator-=(const Vec4<T>& v) {
+		x-=v.x; y-=v.y; z-=v.z; w-=v.w;
+		return *this;
+	}
+	inline Vec4& operator*=(const Vec4<T>& v) {
+		x*=v.x; y*=v.y; z*=v.z; w*=v.w;
+		return *this;
+	}
+	inline Vec4& operator/=(const Vec4<T>& v) {
+		x/=v.x; y/=v.y; z/=v.z; w/=v.w;
+		return *this;
+	}
+	template<class P>
+	inline Vec4& operator+=(P s) {
+		x+=s; y+=s; z+=s; w+=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec4& operator-=(P s) {
+		x-=s; y-=s; z-=s; w-=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec4& operator*=(P s) {
+		x*=s; y*=s; z*=s; w*=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec4& operator/=(P s) {
+		x/=s; y/=s; z/=s; w/=s;
+		return *this;
+	}
 };
 
-struct Vec4f {
-	float x, y, z, w;
-	Vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
-};
-
+template<class T>
 struct Vec3 {
-	int x, y, z;
-	Vec3(int x, int y, int z) : x(x), y(y), z(z) {}
+	T x, y, z;
+	template<class P>
+	Vec3(P x, P y, P z) : x(x), y(y), z(z) {}
+	template<class P>
+	Vec3(P all) : x(all), y(all), z(all) {}
+	Vec3() : x(0), y(0), z(0) {}
+	inline Vec3& cross(const Vec3<T>& v) {
+		return new Vec3(
+			(y * v.z - z * v.y),
+			(x * v.z - z * v.x),
+			(x * v.y - y * v.x)
+		);
+	}
+	inline Vec3& dot(const Vec3<T>& v) {
+		return (x * v.x + y * v.y + z * v.z);
+	}
+	inline const Vec3& operator+() {
+		return *this;
+	}
+	inline Vec3& operator-() {
+		return Vec3<T>(-x, -y, -z);
+	}
+	inline Vec3& operator+(const Vec3<T>& v) {
+		return new Vec3(x + v.x, y + v.y, z + v.z);
+	}
+	inline Vec3& operator-(const Vec3<T>& v) {
+		return new Vec3(x - v.x, y - v.y, z - v.z);
+	}	
+	inline Vec3& operator*(const Vec3<T>& v) {
+		return new Vec3(x * v.x, y * v.y, z * v.z);
+	}
+	inline Vec3& operator/(const Vec3<T>& v) {
+		return new Vec3(x / v.x, y / v.y, z / v.z);
+	}
+	inline Vec3& operator+=(const Vec3<T>& v) {
+		x+=v.x; y+=v.y; z+=v.z;
+		return *this;
+	}
+	inline Vec3& operator-=(const Vec3<T>& v) {
+		x-=v.x; y-=v.y; z-=v.z;
+		return *this;
+	}
+	inline Vec3& operator*=(const Vec3<T>& v) {
+		x*=v.x; y*=v.y; z*=v.z;
+		return *this;
+	}
+	inline Vec3& operator/=(const Vec3<T>& v) {
+		x/=v.x; y/=v.y; z/=v.z;
+		return *this;
+	}
+	template<class P>
+	inline Vec3& operator+=(P s) {
+		x+=s; y+=s; z+=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec3& operator-=(P s) {
+		x-=s; y-=s; z-=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec3& operator*=(P s) {
+		x*=s; y*=s; z*=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec3& operator/=(P s) {
+		x/=s; y/=s; z/=s;
+		return *this;
+	}
 };
 
-struct Vec3f {
-	float x, y, z;
-	Vec3f(float x, float y, float z) : x(x), y(y), z(z) {}
-};
-
+template<class T>
 struct Vec2 {
-	int x, y;
-	Vec2(int x, int y) : x(x), y(y) {}
-};
-
-struct Vec2f {
-	float x, y;
-	Vec2f(float x, float y) : x(x), y(y) {}
+	T x, y;
+	template<class P>
+	Vec2(P x, P y) : x(x), y(y) {}
+	template<class P>
+	Vec2(P all) : x(all), y(all) {}
+	Vec2() : x(0), y(0) {}
+		inline const Vec2& operator+() {
+		return *this;
+	}
+	inline Vec2& dot(const Vec3<T>& v) {
+		return (x * v.x + y * v.y);
+	}
+	inline Vec2& operator-() {
+		return Vec3<T>(-x, -y);
+	}
+	inline Vec2& operator+(const Vec2<T>& v) {
+		return new Vec2(x + v.x, y + v.y);
+	}
+	inline Vec2& operator-(const Vec2<T>& v) {
+		return new Vec2(x - v.x, y - v.y);
+	}	
+	inline Vec2& operator*(const Vec2<T>& v) {
+		return new Vec2(x * v.x, y * v.y);
+	}
+	inline Vec2& operator/(const Vec2<T>& v) {
+		return new Vec2(x / v.x, y / v.y);
+	}
+	inline Vec2& operator+=(const Vec2<T>& v) {
+		x+=v.x; y+=v.y;
+		return *this;
+	}
+	inline Vec2& operator-=(const Vec2<T>& v) {
+		x-=v.x; y-=v.y;
+		return *this;
+	}
+	inline Vec2& operator*=(const Vec2<T>& v) {
+		x*=v.x; y*=v.y;
+		return *this;
+	}
+	inline Vec2& operator/=(const Vec2<T>& v) {
+		x/=v.x; y/=v.y;
+		return *this;
+	}
+	template<class P>
+	inline Vec2& operator+=(P s) {
+		x+=s; y+=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec2& operator-=(P s) {
+		x-=s; y-=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec2& operator*=(P s) {
+		x*=s; y*=s;
+		return *this;
+	}
+	template<class P>
+	inline Vec2& operator/=(P s) {
+		x/=s; y/=s;
+		return *this;
+	}
 };

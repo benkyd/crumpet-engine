@@ -40,6 +40,12 @@ file(GLOB_RECURSE SourceFiles
 )
 
 add_executable(${BuildDIR}/${EXEName} ${SourceFiles})
+
+set_target_properties(${BuildDIR}/${EXEName} PROPERTIES
+    CXX_STANDARD 17
+    CXX_EXTENSIONS OFF
+)
+
 target_link_libraries(${BuildDIR}/${EXEName}
     SDL2
     SDL2_image

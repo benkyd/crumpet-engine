@@ -63,7 +63,7 @@ bool Rect::Contains(Rect* rect) {
 	return (rect->x >= x && rect->Right() <= (x + w) && rect->y >= y && rect->Bottom() <= (y + h));
 }
 
-bool Rect::Contains(Vec2* point) {
+bool Rect::Contains(Vec2<int>* point) {
 	return (point->x >= x && point->x <= (x + w) && point->y >= y && point->y <= (y + h));
 }
 
@@ -72,13 +72,13 @@ bool Rect::Contains(int x, int y, int w, int h) {
 	return Contains(&tempRect);
 }
 
-Vec2* Rect::Position() {
-	Vec2* res = new Vec2(x, y);
+Vec2<int>* Rect::Position() {
+	Vec2<int>* res = new Vec2<int>(x, y);
 	return res;
 }
 
-Vec2* Rect::Center() {
-	Vec2* res = new Vec2(x + (w / 2), y + (h / 2));
+Vec2<int>* Rect::Center() {
+	Vec2<int>* res = new Vec2<int>(x + (w / 2), y + (h / 2));
 	return res;
 }
 
@@ -142,17 +142,17 @@ void Rect::SetRect(int x, int y, int w, int h) {
 	this->rect->h = h;
 }
 
-void Rect::SetSize(Vec2* size) {
+void Rect::SetSize(Vec2<int>* size) {
 	this->x = size->x;
 	this->y = size->y;
 }
 
-void Rect::SetPos(Vec2* pos) {
+void Rect::SetPos(Vec2<int>* pos) {
 	this->w = pos->x;
 	this->h = pos->y;
 }
 
-void Rect::Translate(Vec2* offset) {
+void Rect::Translate(Vec2<int>* offset) {
 	this->x += offset->x;
 	this->y += offset->y;
 }

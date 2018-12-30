@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <math.h>
+#include "../math.h"
 
 #include "../resourcemanager/resourcemanager.h"
 
@@ -15,5 +15,5 @@ public:
 private:
     std::string textureRef;
     std::string textureSource;
-    Vec2 textureDimensions;
+    Vec2<int> textureDimensions;
 };

@@ -10,6 +10,12 @@ x -> complete
 **TODO**
 [-] Comment the code
 [?] Overload operators in the logger and support for streams
+[?] Vector classes (2d, 3d, 4d)
+    [x] Operators for each
+    [x] Scalar addition, subtraction, addition and division
+    [x] Dot product
+    [x] Cross product (3d)
+    [ ] Other functions for max, min, magnitude, unitvec all that
 [ ] Entity system
     [ ] Entity manager
         [ ] Ability to make entities and manage textures between them
