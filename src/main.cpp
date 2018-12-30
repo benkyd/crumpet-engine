@@ -5,7 +5,7 @@
 
 int main(int argc, char** argv) {
 
-	Logger.Log() << "Okay, this is epic" << 1234;
+	// Logger.Log() << "Okay, this is epic" << 1234;
 
 	Game game;
 	game.renderer.createWindow("Crumpet Engine", 600, 400, SCREEN_MODE_VSYNC);
