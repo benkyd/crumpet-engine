@@ -33,7 +33,11 @@ void TextureManager::unregisterTexture(std::string textureName) {
     delete &m_registerdTextures[textureName];
 }
 
-SDL_Texture* TextureManager::getTexture(std::string textureName) {
+Texture* TextureManager::getTexture(std::string textureName) {
+    return m_registerdTextures[textureName];
+}
+
+SDL_Texture* TextureManager::getSDLTexture(std::string textureName) {
     return m_registerdTextures[textureName]->texture;
 }
 

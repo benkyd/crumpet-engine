@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ENTITYMANAGER_ENTITYMANAGER_H_
+#define _ENTITYMANAGER_ENTITYMANAGER_H_
 
 #include <string>
 #include <map>
@@ -16,3 +17,5 @@ private:
     std::map<unsigned short int, Entity*> m_activeEntities;
     ResourceManger* resourceManger;
 };
+
+#endif

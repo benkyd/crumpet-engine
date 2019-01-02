@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _INPUT_KEYBOARD_H_
+#define _INPUT_KEYBOARD_H_
 
 typedef enum {
     KEY_A,
@@ -48,6 +49,7 @@ typedef enum {
 class Keyboard {
 public:
     Key lastOutput = KEY_SPACE;
-
-
+    // do this with states
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _GAME_H_
+#define _GAME_H_
 
 #include <iostream>
 #include <string>
@@ -25,3 +26,5 @@ public:
 
     virtual ~Game();
 };
+
+#endif

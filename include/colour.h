@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _INCLUDE_COLOUR_H_
+#define _INCLUDE_COLOUR_H_
 
 #include <string>
 #include <sstream>
@@ -61,3 +62,5 @@ public:
         std::cout << "\033[" << colour << "m";
     }
 };
+
+#endif

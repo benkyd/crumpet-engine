@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _RECT_H_
+#define _RECT_H_
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -68,3 +69,5 @@ public:
 private:
 	SDL_Rect* rect;
 };
+
+#endif

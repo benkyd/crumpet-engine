@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _INPUT_INPUT_H_
+#define _INPUT_INPUT_H_
 
 #include <vector>
 #include <SDL2/SDL.h>
@@ -20,3 +21,5 @@ private:
     SDL_Event m_event;
     Renderer* m_renderer;
 };
+
+#endif

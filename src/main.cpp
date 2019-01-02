@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 		game.input.poll();
 		Rect rectfrom(0, 0, 1000, 1000);
 		Rect rectTo(-300, 0, 1000, 1000);
-		SDL_RenderCopy(game.renderer.SDLRenderer, game.textureManager.getTexture("mario"), rectfrom.ToSDLRect(), rectTo.ToSDLRect());
+		SDL_RenderCopy(game.renderer.SDLRenderer, game.textureManager.getSDLTexture("mario"), rectfrom.ToSDLRect(), rectTo.ToSDLRect());
 		game.renderer.update();
 	}
 }

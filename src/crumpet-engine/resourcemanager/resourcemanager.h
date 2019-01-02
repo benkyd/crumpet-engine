@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _RESOURCEMANAGER_RESOURCEMANAGER_H_
+#define _RESOURCEMANAGER_RESOURCEMANAGER_H_
 
 #include "texturemanager.h"
 
@@ -10,3 +11,5 @@ public:
 
     virtual ~ResourceManger() {};
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _RENDERENGINE_RENDERER_H_
+#define _RENDERENGINE_RENDERER_H_
 
 #include <logger.h>
 #include <string>
@@ -26,3 +27,5 @@ private:
     SDL_Window* m_window;
     bool m_isWindowClosed;
 };
+
+#endif

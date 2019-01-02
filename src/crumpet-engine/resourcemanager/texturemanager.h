@@ -1,4 +1,5 @@
-#pragma once 
+#ifndef _RESOURCEMANAGER_TEXTUREMANAGER_H_
+#define _RESOURCEMANAGER_TEXTUREMANAGER_H_
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -24,7 +25,8 @@ public:
 
     bool registerTexture(std::string textureSource, std::string textureName);
     void unregisterTexture(std::string textureName);
-    SDL_Texture* getTexture(std::string textureName);
+    Texture* getTexture(std::string textureName);
+    SDL_Texture* getSDLTexture(std::string textureName);
     std::string getTextureSource(std::string textureName);
 
     virtual ~TextureManager();
@@ -32,3 +34,5 @@ private:
     std::map<std::string, Texture*> m_registerdTextures;
     Renderer* m_renderer;
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ENTITYMANAGER_BASE_H_
+#define _ENTITYMANAGER_BASE_H_
 
 #include <string>
 #include "../math.h"
@@ -9,7 +10,7 @@ class EntityBase {
 public:
     EntityBase();
 
-    SDL_Texture* texture;
+    Texture* texture;
 
     virtual ~EntityBase();
 private:
@@ -17,3 +18,5 @@ private:
     std::string textureSource;
     Vec2<int> textureDimensions;
 };
+
+#endif

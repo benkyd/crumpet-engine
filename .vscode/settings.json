@@ -53,6 +53,7 @@
         "variant": "cpp",
         "condition_variable": "cpp",
         "mutex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "map": "cpp"
     }
 }

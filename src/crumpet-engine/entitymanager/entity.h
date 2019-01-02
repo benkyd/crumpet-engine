@@ -1,4 +1,5 @@
-#pragma once 
+#ifndef _ENTITYMANAGER_ENTITY_H_
+#define _ENTITYMANAGER_ENTITY_H_
 
 #include "entitybase.h"
 
@@ -8,3 +9,5 @@ public:
 
     virtual ~Entity();
 };
+
+#endif
