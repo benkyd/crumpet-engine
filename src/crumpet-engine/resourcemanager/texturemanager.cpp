@@ -20,8 +20,8 @@ bool TextureManager::registerTexture(std::string textureSource, std::string text
     }
 	SDL_FreeSurface(loadSurface);
 
-    m_textureSources[textureName] = textureSource;
-    m_registerdTextures[textureName] = texture;
+    Texture* temp = new Texture(textureName, textureSource, texture);
+    m_registerdTextures[textureName] = temp;
 
     Logger::info("Loaded texture " + textureSource + " as " + textureName);
 
@@ -29,22 +29,21 @@ bool TextureManager::registerTexture(std::string textureSource, std::string text
 }
 
 void TextureManager::unregisterTexture(std::string textureName) {
-    SDL_DestroyTexture(m_registerdTextures[textureName]);
-
-    delete &m_textureSources[textureName];
+    SDL_DestroyTexture(m_registerdTextures[textureName]->texture);
     delete &m_registerdTextures[textureName];
 }
 
 SDL_Texture* TextureManager::getTexture(std::string textureName) {
-    return m_registerdTextures[textureName];
+    return m_registerdTextures[textureName]->texture;
 }
 
 std::string TextureManager::getTextureSource(std::string textureName) {
-    return m_textureSources[textureName];
+    return m_registerdTextures[textureName]->source;
 }
 
 TextureManager::~TextureManager() {
-    for (std::map<std::string, SDL_Texture*>::iterator it = m_registerdTextures.begin(); it != m_registerdTextures.end(); it++) {
-        SDL_DestroyTexture(m_registerdTextures[it->first]);
+    for (std::map<std::string, Texture*>::iterator it = m_registerdTextures.begin(); it != m_registerdTextures.end(); it++) {
+        SDL_DestroyTexture(m_registerdTextures[it->first]->texture);
+        delete m_registerdTextures[it->first];
     }
 }

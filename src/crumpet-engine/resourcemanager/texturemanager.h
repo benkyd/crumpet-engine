@@ -8,6 +8,16 @@
 
 #include "../renderengine/renderer.h"
 
+struct Texture {
+    Texture(std::string name, std::string source, SDL_Texture* texture) 
+        : name(name), source(source), texture(texture) { }
+    Texture(std::string name, std::string source) 
+        : name(name), source(source) { }
+    std::string name;
+    std::string source;
+    SDL_Texture* texture;
+};
+
 class TextureManager {
 public:
     TextureManager(Renderer* renderer);
@@ -19,7 +29,6 @@ public:
 
     virtual ~TextureManager();
 private:
-    std::map<std::string, std::string> m_textureSources;
-    std::map<std::string, SDL_Texture*> m_registerdTextures;
+    std::map<std::string, Texture*> m_registerdTextures;
     Renderer* m_renderer;
 };

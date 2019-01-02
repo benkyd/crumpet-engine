@@ -16,6 +16,9 @@ x -> complete
     [x] Dot product
     [x] Cross product (3d)
     [ ] Other functions for max, min, magnitude, unitvec all that
+[ ] Resource management
+    [ ] Texture map class, owned by entity, stores texture references from the textrue manager
+    [ ] Sound at some point
 [ ] Entity system
     [ ] Entity manager
         [ ] Ability to make entities and manage textures between them
