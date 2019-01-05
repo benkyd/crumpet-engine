@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(crumpet-engine)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CMakeFiles/)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} CMakeModules/)
 cmake_policy(SET CMP0037 OLD)
 
 set(EXEName crumpet-engine)

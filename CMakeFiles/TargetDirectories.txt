@@ -1,3 +1,0 @@
-/home/ben/Programming/Games/crumpet-engine/CMakeFiles/rebuild_cache.dir
-/home/ben/Programming/Games/crumpet-engine/CMakeFiles/bin/crumpet-engine.dir
-/home/ben/Programming/Games/crumpet-engine/CMakeFiles/edit_cache.dir
