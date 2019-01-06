@@ -2,11 +2,12 @@
 #define _RESOURCEMANAGER_TEXTUREMANAGER_H_
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <logger.h>
+#include <vector>
 #include <string>
 #include <map>
 
+#include <logger.h>
+#include <math.h>
 #include "../renderengine/renderer.h"
 
 struct Texture {
@@ -17,6 +18,11 @@ struct Texture {
     std::string name;
     std::string source;
     SDL_Texture* texture;
+    // Vec2<int>* textureDimensions;
+};
+
+struct TextureMap {
+    std::vector<Texture*> textures;
 };
 
 class TextureManager {

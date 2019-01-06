@@ -14,9 +14,6 @@ public:
 
     virtual ~EntityBase();
 private:
-    std::string textureRef;
-    std::string textureSource;
-    Vec2<int> textureDimensions;
 };
 
 #endif

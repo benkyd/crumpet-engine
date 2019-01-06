@@ -1,5 +1,7 @@
 #include "texturemanager.h"
 
+#include <SDL2/SDL_image.h>
+
 TextureManager::TextureManager(Renderer* renderer) {
     m_renderer = renderer;
 }
