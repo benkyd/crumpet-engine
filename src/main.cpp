@@ -14,7 +14,10 @@ int main(int argc, char** argv) {
 		game.input.poll();
 		Rect rectfrom(0, 0, 100, 100);
 		Rect rectTo(0, 0, 400, 400);
-		SDL_RenderCopy(game.renderer.SDLRenderer, game.textureManager.getSDLTexture("Eldritch"), rectfrom.ToSDLRect(), rectTo.ToSDLRect());
+		SDL_RenderCopy(	game.renderer.SDLRenderer, 
+						game.textureManager.getSDLTexture("Eldritch"), 
+						rectfrom.ToSDLRect(), 
+						rectTo.ToSDLRect());
 		game.renderer.update();
 	}
 }
