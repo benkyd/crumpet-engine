@@ -3,7 +3,7 @@
 
 #include <logger.h>
 
-int main(int argc, char** argv) {
+int main() {
 	Game game;
 	game.renderer.createWindow("Crumpet Engine", 600, 400, SCREEN_MODE_VSYNC);
 
