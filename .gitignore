@@ -6,3 +6,4 @@ Makefile
 crumpet-engine.sln
 *.vcxproj
 *.vcxproj.filters
+.vs/
